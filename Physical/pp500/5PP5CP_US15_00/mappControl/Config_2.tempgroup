@@ -8,5 +8,6 @@
         <Property ID="Zone[2]" Value="gTempController_3" />
       </Group>
     </Group>
+    <Selector ID="Alarms" Value="MpAlarmX" />
   </Element>
 </Configuration>

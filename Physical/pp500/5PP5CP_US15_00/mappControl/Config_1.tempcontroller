@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <Element ID="gTempController_1" Type="tempcontroller" />
-  <Element ID="gTempController_2" Type="tempcontroller" />
-  <Element ID="gTempController_3" Type="tempcontroller" />
+  <Element ID="gTempController_1" Type="tempcontroller">
+    <Selector ID="Alarms" Value="MpAlarmX" />
+  </Element>
+  <Element ID="gTempController_2" Type="tempcontroller">
+    <Selector ID="Alarms" Value="MpAlarmX" />
+  </Element>
+  <Element ID="gTempController_3" Type="tempcontroller">
+    <Selector ID="Alarms" Value="MpAlarmX" />
+  </Element>
 </Configuration>
