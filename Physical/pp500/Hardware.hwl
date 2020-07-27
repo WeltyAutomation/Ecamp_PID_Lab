@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<BR.AS.HardwareTopology Version="0.0.0.1">
+  <TimeStamps>
+    <TimeStamp LogicalPath="pp500.Hardware.hw" LastWriteTime="07/27/2020 11:49:25" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="5PP520.1505-00" Type="5PP520.1505-00" X="-172.5" Y="90" />
+    <Module Name="5PP5IF.FPLM-00" Type="5PP5IF.FPLM-00" X="100" Y="123" />
+    <Module Name="5PP5CP_US15_00" Type="5PP5CP.US15-00" X="100" Y="100" />
+  </Modules>
+  <Links />
+  <InfoElements />
+</BR.AS.HardwareTopology>
