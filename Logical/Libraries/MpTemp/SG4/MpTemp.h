@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpTemp 5.09.0 */
+/* MpTemp 5.06.0 */
 
 #ifndef _MPTEMP_
 #define _MPTEMP_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpTemp_VERSION
-#define _MpTemp_VERSION 5.09.0
+#define _MpTemp_VERSION 5.06.0
 #endif
 
 #include <bur/plctypes.h>
@@ -30,17 +30,6 @@ extern "C"
 #endif
 
 /* Datatypes and datatypes of function blocks */
-typedef enum MpTempControllerSignalCoolEnum
-{	mpTEMP_SIGNAL_MOD_COOL_PWM = 0,
-	mpTEMP_SIGNAL_MOD_COOL_PFM = 1,
-	mpTEMP_SIGNAL_MOD_COOL_NOT_USED = 2
-} MpTempControllerSignalCoolEnum;
-
-typedef enum MpTempControllerSignalHeatEnum
-{	mpTEMP_SIGNAL_MOD_HEAT_PWM = 0,
-	mpTEMP_SIGNAL_MOD_HEAT_NOT_USED = 1
-} MpTempControllerSignalHeatEnum;
-
 typedef enum MpTempHCMConceptEnum
 {	mpTEMP_HCM_CONCEPT_CCS = 0
 } MpTempHCMConceptEnum;
@@ -50,17 +39,11 @@ typedef enum MpTempHCMOperationEnum
 	mpTEMP_OPERATION_CONTINUOUS = 1
 } MpTempHCMOperationEnum;
 
-typedef enum MpTempSystemTypeEnum
-{	mpTEMP_SYSTEM_TYPE_PT2 = 0,
-	mpTEMP_SYSTEM_TYPE_IT1 = 1,
-	mpTEMP_SYSTEM_TYPE_NONE = 3
-} MpTempSystemTypeEnum;
-
 typedef enum MpTempHCMStateEnum
-{	mpTEMP_HCM_WAIT = 0,
-	mpTEMP_HCM_MEASUREMENT = 1,
-	mpTEMP_HCM_INTERVAL = 2,
-	mpTEMP_HCM_IDLE = 3
+{	mpTEMP_HCM_WAIT,
+	mpTEMP_HCM_MEASUREMENT,
+	mpTEMP_HCM_INTERVAL,
+	mpTEMP_HCM_IDLE
 } MpTempHCMStateEnum;
 
 typedef enum MpTempHysteresisModeEnum
@@ -95,10 +78,14 @@ typedef enum MpTempPWMScheduleModeEnum
 typedef enum MpTempTuningModeEnum
 {	mpTEMP_TUNING_MODE_OFF = 0,
 	mpTEMP_TUNING_MODE_HEAT = 1,
-	mpTEMP_TUNING_MODE_HEAT_COOL = 2,
-	mpTEMP_TUNING_MODE_OSC_HEAT = 3,
-	mpTEMP_TUNING_MODE_OSC_HEAT_COOL = 4
+	mpTEMP_TUNING_MODE_HEAT_COOL = 2
 } MpTempTuningModeEnum;
+
+typedef enum MpTempTuningSystemCheckEnum
+{	mpTEMP_TUNING_SYS_CHECK_SHORT = 0,
+	mpTEMP_TUNING_SYS_CHECK_MEDIUM = 1,
+	mpTEMP_TUNING_SYS_CHECK_LONG = 2
+} MpTempTuningSystemCheckEnum;
 
 typedef enum MpTempTuningStateEnum
 {	mpTEMP_TUNING_STATE_IDLE = 0,
@@ -111,12 +98,6 @@ typedef enum MpTempTuningStateEnum
 	mpTEMP_TUNING_STATE_ERROR = 99,
 	mpTEMP_TUNING_STATE_ABORTED = 100
 } MpTempTuningStateEnum;
-
-typedef enum MpTempTuningSystemCheckEnum
-{	mpTEMP_TUNING_SYS_CHECK_SHORT = 0,
-	mpTEMP_TUNING_SYS_CHECK_MEDIUM = 1,
-	mpTEMP_TUNING_SYS_CHECK_LONG = 2
-} MpTempTuningSystemCheckEnum;
 
 typedef enum MpTempZoneTypeEnum
 {	mpTEMP_ZONE_TYPE_HEAT = 0,
@@ -222,30 +203,6 @@ typedef struct MpTempControllerFilterType
 	float NoiseReduction;
 } MpTempControllerFilterType;
 
-typedef struct MpTempControllerSignalHeatType
-{	enum MpTempControllerSignalHeatEnum Type;
-} MpTempControllerSignalHeatType;
-
-typedef struct MpTempControllerSignalCoolType
-{	enum MpTempControllerSignalCoolEnum Type;
-} MpTempControllerSignalCoolType;
-
-typedef struct MpTempSignalModulationType
-{	struct MpTempControllerSignalHeatType Heat;
-	struct MpTempControllerSignalCoolType Cool;
-} MpTempSignalModulationType;
-
-typedef struct MpTempPFMParType
-{	float PulseWidth;
-	float MinPause;
-	float MinOutput;
-	plcbit ForceMinPause;
-} MpTempPFMParType;
-
-typedef struct MpTempPFMType
-{	struct MpTempPFMParType Cool;
-} MpTempPFMType;
-
 typedef struct MpTempControllerConfigType
 {	enum MpTempZoneTypeEnum Type;
 	float AmbientTemperature;
@@ -258,8 +215,6 @@ typedef struct MpTempControllerConfigType
 	struct MpTempPWMType PWMParameters;
 	struct MpTempHCMType HCMParameters;
 	struct MpTempControllerFilterType TemperatureFilter;
-	struct MpTempSignalModulationType SignalModulation;
-	struct MpTempPFMType PFMParameters;
 } MpTempControllerConfigType;
 
 typedef struct MpTempPWMScheduleParType
@@ -316,7 +271,6 @@ typedef struct MpTempPIDParType
 typedef struct MpTempPIDType
 {	struct MpTempPIDParType Heat;
 	struct MpTempPIDParType Cool;
-	float IntegratorPreloading;
 } MpTempPIDType;
 
 typedef struct MpTempTuningType
@@ -329,7 +283,6 @@ typedef struct MpTempControllerProfileType
 {	struct MpTempProfileParType Heat;
 	struct MpTempProfileParType Cool;
 	float AttenuationFactor;
-	float OvershootReduction;
 } MpTempControllerProfileType;
 
 typedef struct MpTempHysteresisBand
@@ -355,11 +308,6 @@ typedef struct MpTempProfileType
 	struct MpTempProfileParType Cool;
 } MpTempProfileType;
 
-typedef struct MpTempSystemCharacteristicsType
-{	enum MpTempSystemTypeEnum Heat;
-	enum MpTempSystemTypeEnum Cool;
-} MpTempSystemCharacteristicsType;
-
 typedef struct MpTempTuningQualityType
 {	unsigned char Heat;
 	unsigned char Cool;
@@ -376,7 +324,6 @@ typedef struct MpTempTuningInfoType
 	struct MpTempProfileType ProfileParameters;
 	struct MpTempTuningQualityType Quality;
 	struct MpTempTuningFilterType TemperatureFilter;
-	struct MpTempSystemCharacteristicsType SystemType;
 } MpTempTuningInfoType;
 
 typedef struct MpTempControllerProfileInfoType
@@ -398,9 +345,6 @@ typedef struct MpTempSimulationInfoType
 {	float HeatValue;
 	float CoolValue;
 	float ActualTemperature;
-	plcbit Heat;
-	plcbit Cool;
-	struct MpTempSystemCharacteristicsType SystemType;
 } MpTempSimulationInfoType;
 
 typedef struct MpTempStatusIDType
@@ -451,14 +395,14 @@ typedef struct MpTempGroupInfoType
 	struct MpTempDiagType Diag;
 } MpTempGroupInfoType;
 
+typedef struct MpTempInfoType
+{	struct MpTempDiagType Diag;
+} MpTempInfoType;
+
 typedef struct MpTempHCMInfoType
 {	enum MpTempHCMStateEnum State;
 	struct MpTempDiagType Diag;
 } MpTempHCMInfoType;
-
-typedef struct MpTempInfoType
-{	struct MpTempDiagType Diag;
-} MpTempInfoType;
 
 typedef struct MpTempController
 {

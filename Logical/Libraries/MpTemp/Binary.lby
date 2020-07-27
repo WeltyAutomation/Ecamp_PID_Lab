@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.7.3.93 SP?>
-<Library Version="5.09.0" SubType="Binary" Description="Temperature control" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="5.06.0" SubType="Binary" Description="Temperature control" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>MpTemp.var</File>
     <File>MpTemp.typ</File>
@@ -9,6 +9,6 @@
     <File>MpTemp.fun</File>
   </Files>
   <Dependencies>
-    <Dependency ObjectName="MpBase" FromVersion="5.09.0" ToVersion="5.09.9" />
+    <Dependency ObjectName="MpBase" FromVersion="5.06.0" ToVersion="5.06.9" />
   </Dependencies>
 </Library>
