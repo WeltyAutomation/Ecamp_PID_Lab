@@ -64,16 +64,9 @@ PROGRAM _CYCLIC
 				TempState                                      := TEMP_IDLE;
 			END_IF
 		TEMP_AUTOTUNE:
-			IF (TempGroup.MpZones[0].Out.TuningDone AND
-				TempGroup.MpZones[1].Out.TuningDone AND
-				TempGroup.MpZones[2].Out.TuningDone) THEN
-				
-				TempGroup.MpZones[index].In.Parameters.Tuning.SetPointHeat := TARGET_TEMP;			
-				TempGroup.MpZones[index].In.Tune                           := TRUE;
-			ELSE
-				TempGroup.MpZones[index].In.Tune                           := FALSE;
-				TempState                                                  := TEMP_IDLE;
-			END_IF
+			FOR index := 0 TO 2 DO
+				TempGroup.MpZones[index].In.Tune := TRUE;
+			END_FOR;	
 			
 		TEMP_ERROR:
 	END_CASE;

@@ -1,5 +1,5 @@
 VAR
-	TempGroup : TempGroup_type;
+	TempGroup : TempGroup_type := (MpZones:=[3((In:=(Parameters:=(Tuning:=(SetPointHeat:=80,SetPointCool:=50)))))]);
 	index : USINT;
 	TempControllerFBs : ARRAY[0..2] OF MpTempController;
 	TempState : TempCtrlState_enum;
