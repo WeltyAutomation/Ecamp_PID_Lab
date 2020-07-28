@@ -1,8 +1,9 @@
-
 VAR
-
+	gMainState : MainState_enum := MAIN_INIT;
 END_VAR
-
 VAR CONSTANT
-
+	TARGET_TEMP : USINT := 80;
+END_VAR
+VAR
+	gMainCtrl : MainCtrl_type;
 END_VAR
