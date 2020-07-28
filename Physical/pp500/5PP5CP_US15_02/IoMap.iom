@@ -1,4 +1,10 @@
-
 VAR_CONFIG
-
+	gDio.HeatOnIndicators[0] AT %QX."X20DO4332".DigitalOutput01;
+	gDio.HeatOnIndicators[1]  AT %QX."X20DO4332".DigitalOutput02;
+	gDio.HeatOnIndicators[2]  AT %QX."X20DO4332".DigitalOutput03;
+	gDio.HeatOnIndicators[3]  AT %QX."X20DO4332".DigitalOutput04;
+	gDio.ZoneTemps[0] AT %IW."X20AT6402".Temperature01;
+	gDio.ZoneTemps[1]  AT %IW."X20AT6402".Temperature02;
+	gDio.ZoneTemps[2]  AT %IW."X20AT6402".Temperature03;
+	gDio.ZoneTemps[3]  AT %IW."X20AT6402".Temperature04;
 END_VAR
