@@ -15,6 +15,7 @@ TYPE
 		ActualTemperature : REAL;
 		Control : BOOL;
 		Parameters : MpTempControllerParType;
+		Tune : BOOL;
 	END_STRUCT;
 	TempZoneOutput_type : 	STRUCT 
 		Active : USINT;
@@ -25,12 +26,14 @@ TYPE
 		Cool : BOOL;
 		ControlActive : USINT;
 		Info : MpTempControllerInfoType;
+		TuningDone : BOOL;
 	END_STRUCT;
 	TempCtrlState_enum : 
 		(
 		TEMP_INIT,
 		TEMP_IDLE,
 		TEMP_ON,
+		TEMP_AUTOTUNE,
 		TEMP_ERROR
 		);
 	TempStatus_type : 	STRUCT 
