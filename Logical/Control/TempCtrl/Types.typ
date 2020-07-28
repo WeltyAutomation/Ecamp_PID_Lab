@@ -19,10 +19,10 @@ TYPE
 	TempZoneOutput_type : 	STRUCT 
 		Active : USINT;
 		Error : USINT;
-		StatusID : USINT;
+		StatusID : DINT;
 		UpdateDone : USINT;
-		Heat : USINT;
-		Cool : USINT;
+		Heat : BOOL;
+		Cool : BOOL;
 		ControlActive : USINT;
 		Info : MpTempControllerInfoType;
 	END_STRUCT;
@@ -34,8 +34,8 @@ TYPE
 		TEMP_ERROR
 		);
 	TempStatus_type : 	STRUCT 
-		AmbientTemp : REAL;
-		CurrentTemp : REAL;
-		AtTemp : BOOL;
+		AmbientTemp : ARRAY[0..3]OF REAL;
+		CurrentTemp : ARRAY[0..3]OF REAL;
+		AtTemp : ARRAY[0..3]OF BOOL;
 	END_STRUCT;
 END_TYPE

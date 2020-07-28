@@ -1,54 +1,62 @@
+(*********************************************************************************
+ * Copyright:   
+ * Author:    TylerWoodley 
+ * Created:   July 28, 2020/1:57 PM 
+ *********************************************************************************)
 
 PROGRAM _CYCLIC
 	TempControllerFBs[0].MpLink := ADR(gTempController_1);
 	TempControllerFBs[1].MpLink := ADR(gTempController_2);
 	TempControllerFBs[2].MpLink := ADR(gTempController_3);
 	
-	FOR CurrentTempController := 0 TO (SIZEOF(TempGroup.MpZones)/SIZEOF(TempGroup.MpZones[0])) DO
-		
-		TempControllerFBs[CurrentTempController].Enable            := TempGroup.MpZones[CurrentTempController].In.Enable;
-		TempControllerFBs[CurrentTempController].ErrorReset        := TempGroup.MpZones[CurrentTempController].In.ErrorReset;
-		TempControllerFBs[CurrentTempController].Parameters        := ADR(TempGroup.MpZones[CurrentTempController].In.Parameters);
-		TempControllerFBs[CurrentTempController].Update            := TempGroup.MpZones[CurrentTempController].In.Update;
-		TempControllerFBs[CurrentTempController].SetTemperature    := TempGroup.MpZones[CurrentTempController].In.SetTemperature;
-		TempControllerFBs[CurrentTempController].ActualTemperature := TempGroup.MpZones[CurrentTempController].In.ActualTemperature;
-		TempControllerFBs[CurrentTempController].Control           := TempGroup.MpZones[CurrentTempController].In.Control;
-		
-		TempGroup.MpZones[CurrentTempController].Out.Active        := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.Error         := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.StatusID      := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.UpdateDone    := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.Heat          := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.Cool          := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.ControlActive := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.Info          := TempControllerFBs[CurrentTempController].Info;
-		
+	FOR index := 0 TO 2 DO
+	  
+		TempGroup.MpZones[index].In.ActualTemperature := gDio.ZoneTemps[index] / 10;
+		TempStatus.AtTemp[index]                      := (TempGroup.MpZones[index].In.ActualTemperature = TARGET_TEMP);
+	
+		TempControllerFBs[index].Enable               := TRUE;
+	
+		TempControllerFBs[index].ErrorReset           := TempGroup.MpZones[index].In.ErrorReset;
+		TempControllerFBs[index].Parameters           := ADR(TempGroup.MpZones[index].In.Parameters);
+		TempControllerFBs[index].Update               := TempGroup.MpZones[index].In.Update;
+		TempControllerFBs[index].SetTemperature       := TempGroup.MpZones[index].In.SetTemperature;
+		TempControllerFBs[index].ActualTemperature    := TempGroup.MpZones[index].In.ActualTemperature;
+		TempControllerFBs[index].Control              := TempGroup.MpZones[index].In.Control;
+	
+		TempGroup.MpZones[index].Out.Active           := TempControllerFBs[index].Active;
+		TempGroup.MpZones[index].Out.ControlActive    := TempControllerFBs[index].ControlActive;
+		TempGroup.MpZones[index].Out.Cool             := TempControllerFBs[index].Cool;
+		TempGroup.MpZones[index].Out.Error            := TempControllerFBs[index].Error;
+		TempGroup.MpZones[index].Out.Heat             := TempControllerFBs[index].Heat;
+		TempGroup.MpZones[index].Out.Info             := TempControllerFBs[index].Info;
+		TempGroup.MpZones[index].Out.StatusID         := TempControllerFBs[index].StatusID;
+		TempGroup.MpZones[index].Out.UpdateDone       := TempControllerFBs[index].UpdateDone;
+	
 		CASE TempState OF
 			TEMP_INIT:
+				TempState := TEMP_IDLE;
 			TEMP_IDLE:
+				IF gMainCtrl.Cmd.HeatOn THEN
+					TempState := TEMP_ON;
+				END_IF
+			
 			TEMP_ON:
-				IF gMainCtrl.Cmd.HeatOn THEN 
-					TempGroup.MpZones[CurrentTempController].In.SetTemperature := TARGET_TEMP;
-					TempGroup.MpZones[CurrentTempController].In.Enable         := TRUE;					
+				IF gMainCtrl.Cmd.HeatOn  AND NOT TempStatus.AtTemp[index] THEN 
+					TempGroup.MpZones[index].In.SetTemperature := TARGET_TEMP;
+					TempGroup.MpZones[index].In.Control        := TRUE;
+					gDio.HeatOn[index]                         := TempGroup.MpZones[index].Out.Heat;
+					gDio.ZoneFans[index]                       := TempGroup.MpZones[index].Out.Cool;
 				ELSE
-					TempState := TEMP_IDLE;
+					TempGroup.MpZones[index].In.Control        := FALSE;
+					gDio.HeatOn[index]                         := FALSE;
+					gDio.ZoneFans[index]                       := FALSE;
+					TempState                                  := TEMP_IDLE;
 				END_IF
 				
 			TEMP_ERROR:
 		END_CASE;
 		
-	END_FOR;
-	
-	
-	CASE TempState OF
-		TEMP_INIT:
-		TEMP_IDLE:
-		TEMP_ON:			
-		TEMP_ERROR:	  
+		TempControllerFBs[index]();
+	END_FOR;	
 
-	END_CASE;
-	
-	TempControllerFBs[0]();
-	TempControllerFBs[1]();
-	TempControllerFBs[2]();
 END_PROGRAM
