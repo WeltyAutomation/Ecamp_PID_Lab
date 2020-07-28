@@ -6,4 +6,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	gMainCtrl : MainCtrl_type;
+	gDio : DIO_type;
 END_VAR

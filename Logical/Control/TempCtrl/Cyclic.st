@@ -4,11 +4,11 @@ PROGRAM _CYCLIC
 	TempControllerFBs[1].MpLink := ADR(gTempController_2);
 	TempControllerFBs[2].MpLink := ADR(gTempController_3);
 	
-	FOR CurrentTempController TO (SIZEOF(TempGroup.MpZones)/SIZEOF(TempGroup.MpZones[0])) DO
+	FOR CurrentTempController := 0 TO (SIZEOF(TempGroup.MpZones)/SIZEOF(TempGroup.MpZones[0])) DO
 		
 		TempControllerFBs[CurrentTempController].Enable            := TempGroup.MpZones[CurrentTempController].In.Enable;
 		TempControllerFBs[CurrentTempController].ErrorReset        := TempGroup.MpZones[CurrentTempController].In.ErrorReset;
-		TempControllerFBs[CurrentTempController].Parameters        := TempGroup.MpZones[CurrentTempController].In.Parameters;
+		TempControllerFBs[CurrentTempController].Parameters        := ADR(TempGroup.MpZones[CurrentTempController].In.Parameters);
 		TempControllerFBs[CurrentTempController].Update            := TempGroup.MpZones[CurrentTempController].In.Update;
 		TempControllerFBs[CurrentTempController].SetTemperature    := TempGroup.MpZones[CurrentTempController].In.SetTemperature;
 		TempControllerFBs[CurrentTempController].ActualTemperature := TempGroup.MpZones[CurrentTempController].In.ActualTemperature;
@@ -21,7 +21,7 @@ PROGRAM _CYCLIC
 		TempGroup.MpZones[CurrentTempController].Out.Heat          := TempControllerFBs[CurrentTempController].Active;
 		TempGroup.MpZones[CurrentTempController].Out.Cool          := TempControllerFBs[CurrentTempController].Active;
 		TempGroup.MpZones[CurrentTempController].Out.ControlActive := TempControllerFBs[CurrentTempController].Active;
-		TempGroup.MpZones[CurrentTempController].Out.Info          := TempControllerFBs[CurrentTempController].Active;
+		TempGroup.MpZones[CurrentTempController].Out.Info          := TempControllerFBs[CurrentTempController].Info;
 		
 		CASE TempState OF
 			TEMP_INIT:
@@ -31,7 +31,7 @@ PROGRAM _CYCLIC
 					TempGroup.MpZones[CurrentTempController].In.SetTemperature := TARGET_TEMP;
 					TempGroup.MpZones[CurrentTempController].In.Enable         := TRUE;					
 				ELSE
-					TempState := IDLE;
+					TempState := TEMP_IDLE;
 				END_IF
 				
 			TEMP_ERROR:
