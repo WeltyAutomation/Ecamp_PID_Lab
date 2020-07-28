@@ -11,13 +11,10 @@ TYPE
 		MAIN_ERROR
 		);
 	MainCtrl_type : 	STRUCT 
-		Status : MainStatus_type;
 		Cmd : MainCmd_type;
 	END_STRUCT;
 	MainCmd_type : 	STRUCT 
 		HeatOn : BOOL;
-	END_STRUCT;
-	MainStatus_type : 	STRUCT 
 	END_STRUCT;
 	DIO_type : 	STRUCT 
 		ZoneTemps : ARRAY[0..3]OF INT;
