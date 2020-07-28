@@ -30,33 +30,40 @@ PROGRAM _CYCLIC
 		TempGroup.MpZones[index].Out.Heat             := TempControllerFBs[index].Heat;
 		TempGroup.MpZones[index].Out.Info             := TempControllerFBs[index].Info;
 		TempGroup.MpZones[index].Out.StatusID         := TempControllerFBs[index].StatusID;
-		TempGroup.MpZones[index].Out.UpdateDone       := TempControllerFBs[index].UpdateDone;
+		TempGroup.MpZones[index].Out.UpdateDone       := TempControllerFBs[index].UpdateDone;		
+		
+	END_FOR;
 	
-		CASE TempState OF
-			TEMP_INIT:
-				TempState := TEMP_IDLE;
-			TEMP_IDLE:
-				IF gMainCtrl.Cmd.HeatOn THEN
-					TempState := TEMP_ON;
-				END_IF
+	CASE TempState OF
+		TEMP_INIT:
+			TempState := TEMP_IDLE;
+		TEMP_IDLE:
+			IF gMainCtrl.Cmd.HeatOn THEN
+				TempState := TEMP_ON;
+			END_IF
 			
-			TEMP_ON:
-				IF gMainCtrl.Cmd.HeatOn  AND NOT TempStatus.AtTemp[index] THEN 
+		TEMP_ON:
+			IF gMainCtrl.Cmd.HeatOn  AND NOT (TempStatus.AtTemp[0] AND TempStatus.AtTemp[1] AND TempStatus.AtTemp[2]) THEN 
+				FOR index := 0 TO 2 DO
 					TempGroup.MpZones[index].In.SetTemperature := TARGET_TEMP;
 					TempGroup.MpZones[index].In.Control        := TRUE;
 					gDio.HeatOn[index]                         := TempGroup.MpZones[index].Out.Heat;
 					gDio.ZoneFans[index]                       := TempGroup.MpZones[index].Out.Cool;
-				ELSE
+				END_FOR;
+			ELSE
+				FOR index := 0 TO 2 DO
 					TempGroup.MpZones[index].In.Control        := FALSE;
 					gDio.HeatOn[index]                         := FALSE;
 					gDio.ZoneFans[index]                       := FALSE;
-					TempState                                  := TEMP_IDLE;
-				END_IF
+				END_FOR;
+				TempState                                      := TEMP_IDLE;
+			END_IF
 				
-			TEMP_ERROR:
-		END_CASE;
-		
-		TempControllerFBs[index]();
-	END_FOR;	
+		TEMP_ERROR:
+	END_CASE;
 
+	TempControllerFBs[0]();
+	TempControllerFBs[1]();
+	TempControllerFBs[2]();
+	
 END_PROGRAM
