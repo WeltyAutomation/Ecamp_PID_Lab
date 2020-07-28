@@ -20,6 +20,8 @@
     <Connection Connector="SS1" TargetModule="X20TB12d" TargetConnector="SS" />
     <Connection Connector="SL" TargetModule="X20BM11c" TargetConnector="SL1" />
     <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="DisableChannel05" Value="on" />
+    <Parameter ID="DisableChannel06" Value="on" />
   </Module>
   <Module Name="X20BB80a" Type="X20BB80" Version="1.0.2.0" />
   <Module Name="X20BC0083" Type="X20BC0083" Version="2.9.0.0">
