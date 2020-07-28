@@ -19,4 +19,10 @@ TYPE
 	END_STRUCT;
 	MainStatus_type : 	STRUCT 
 	END_STRUCT;
+	DIO_type : 	STRUCT 
+		ZoneTemps : ARRAY[0..3]OF INT;
+		HeatOnIndicators : ARRAY[0..3]OF BOOL;
+		ZoneFans : ARRAY[0..2]OF BOOL;
+		DisturbanceFan : BOOL;
+	END_STRUCT;
 END_TYPE
