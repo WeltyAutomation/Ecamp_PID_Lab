@@ -1,6 +1,6 @@
 VAR
 	TempGroup : TempGroup_type;
-	CurrentTempController : USINT;
+	index : USINT;
 	TempControllerFBs : ARRAY[0..2] OF MpTempController;
 	TempState : TempCtrlState_enum;
 	TempStatus : TempStatus_type;
