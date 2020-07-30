@@ -41,5 +41,8 @@ TYPE
 		CurrentTemp : ARRAY[0..3]OF REAL;
 		AtTemp : ARRAY[0..3]OF BOOL;
 		TuningInProgress : BOOL;
+		SetTemp : ARRAY[0..3]OF REAL;
+		CoolOn : ARRAY[0..3]OF BOOL;
+		HeatOn : ARRAY[0..3]OF BOOL;
 	END_STRUCT;
 END_TYPE
