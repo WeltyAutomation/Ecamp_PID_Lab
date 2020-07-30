@@ -4,12 +4,12 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="MainCtrl" Source="Control.MainCtrl.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="AlarmCtrl" Source="Control.AlarmCtrl.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="TempCtrl" Source="Control.TempCtrl.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
     <Task Name="VisCtrl" Source="Vis.VisCtrl.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="TempCtrl" Source="Control.TempCtrl.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
