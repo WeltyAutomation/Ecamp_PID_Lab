@@ -11,7 +11,8 @@ PROGRAM _CYCLIC
 	
 	FOR index := 0 TO 2 DO
 	  
-		TempGroup.MpZones[index].In.ActualTemperature := gDio.ZoneTemps[index] / 10;
+		TempStatus.CurrentTemp[index]                 := gDio.ZoneTemps[index] / 10;
+		TempGroup.MpZones[index].In.ActualTemperature := TempStatus.CurrentTemp[index];
 		TempStatus.AtTemp[index]                      := (TempGroup.MpZones[index].In.ActualTemperature = TARGET_TEMP);
 	
 		TempControllerFBs[index].Enable               := TRUE;
@@ -40,16 +41,17 @@ PROGRAM _CYCLIC
 	CASE TempState OF
 		TEMP_INIT:
 			TempState := TEMP_IDLE;
-		TEMP_IDLE:
+		TEMP_IDLE:			
 			IF gMainCtrl.Cmd.HeatOn THEN
-				TempState := TEMP_ON;
+				TempState                           := TEMP_ON;
 			ELSIF gMainCtrl.Cmd.AutotuneHeaters THEN
-				TempState := TEMP_AUTOTUNE;
+				TempStatus.TuningInProgress         := TRUE;
+				TempState                           := TEMP_AUTOTUNE;				
 			END_IF
 			
 		TEMP_ON:
-			IF gMainCtrl.Cmd.HeatOn  AND NOT (TempStatus.AtTemp[0] AND TempStatus.AtTemp[1] AND TempStatus.AtTemp[2]) THEN 
-				FOR index := 0 TO 2 DO
+			IF gMainCtrl.Cmd.HeatOn  AND NOT (TempStatus.AtTemp[0] AND TempStatus.AtTemp[1] AND TempStatus.AtTemp[2]) THEN
+				FOR index := 0 TO 2 DO					
 					TempGroup.MpZones[index].In.SetTemperature := TARGET_TEMP;
 					TempGroup.MpZones[index].In.Control        := TRUE;
 					gDio.HeatOn[index]                         := TempGroup.MpZones[index].Out.Heat;
@@ -61,25 +63,31 @@ PROGRAM _CYCLIC
 					gDio.HeatOn[index]                         := FALSE;
 					gDio.ZoneFans[index]                       := FALSE;
 				END_FOR;
+				
 				TempState                                      := TEMP_IDLE;
 			END_IF
 			
 		TEMP_AUTOTUNE:
-			IF NOT (TempGroup.MpZones[0].Out.TuningDone AND 
-				TempGroup.MpZones[1].Out.TuningDone AND
-				TempGroup.MpZones[2].Out.TuningDone) THEN
+			gMainCtrl.Cmd.AutotuneHeaters               := FALSE;
+			
+			IF TempStatus.TuningInProgress THEN
 				
 				FOR index := 0 TO 2 DO
-					TempGroup.MpZones[index].In.Tune    := TRUE;
-					gDio.HeatOn[index]                  := TempGroup.MpZones[index].Out.Heat;
-					gDio.ZoneFans[index]                := TempGroup.MpZones[index].Out.Cool;
+					TempGroup.MpZones[index].In.Tune                   := TRUE;
+					gDio.HeatOn[index]                                 := TempGroup.MpZones[index].Out.Heat;
+					gDio.ZoneFans[index]                               := TempGroup.MpZones[index].Out.Cool;
 				END_FOR;
+				TempStatus.TuningInProgress                            := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
+														               		   TempGroup.MpZones[1].Out.TuningDone AND
+																			   TempGroup.MpZones[2].Out.TuningDone);
+				
 			ELSE
 				FOR index := 0 TO 2 DO
 					TempGroup.MpZones[index].In.Control := FALSE;
 					gDio.HeatOn[index]                  := FALSE;
 					gDio.ZoneFans[index]                := FALSE;
 				END_FOR;
+				
 				TempState                               := TEMP_IDLE;
 			END_IF;
 

@@ -2,6 +2,7 @@ VAR
 	gMainState : MainState_enum := MAIN_INIT;
 END_VAR
 VAR CONSTANT
+	IDLE_TEMP : USINT := 28;
 	TARGET_TEMP : USINT := 80;
 END_VAR
 VAR
