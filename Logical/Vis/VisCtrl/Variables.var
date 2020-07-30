@@ -1,0 +1,5 @@
+VAR
+	Vis : Vis_type;
+	Page : Page_enum := PAGE_START;
+	ChangePage : Page_enum := PAGE_START;
+END_VAR

@@ -3,6 +3,7 @@ PROGRAM _CYCLIC
 
 	CASE gMainState OF
 		MAIN_INIT:
+			gMainState := MAIN_IDLE;
 		MAIN_IDLE:
 		MAIN_HEAT:
 		MAIN_AUTOTUNE:
