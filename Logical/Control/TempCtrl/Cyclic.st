@@ -44,12 +44,12 @@ PROGRAM _CYCLIC
 			IF gMainCtrl.Cmd.HeatOn THEN
 				TempState := TEMP_ON;
 			ELSIF gMainCtrl.Cmd.AutotuneHeaters THEN
-				TempState := TEMP_AUTOTUNE;
+				TempState := TEMP_AUTOTUNE;				
 			END_IF
 			
 		TEMP_ON:
-			IF gMainCtrl.Cmd.HeatOn  AND NOT (TempStatus.AtTemp[0] AND TempStatus.AtTemp[1] AND TempStatus.AtTemp[2]) THEN 
-				FOR index := 0 TO 2 DO
+			IF gMainCtrl.Cmd.HeatOn  AND NOT (TempStatus.AtTemp[0] AND TempStatus.AtTemp[1] AND TempStatus.AtTemp[2]) THEN
+				FOR index := 0 TO 2 DO					
 					TempGroup.MpZones[index].In.SetTemperature := TARGET_TEMP;
 					TempGroup.MpZones[index].In.Control        := TRUE;
 					gDio.HeatOn[index]                         := TempGroup.MpZones[index].Out.Heat;
@@ -61,10 +61,13 @@ PROGRAM _CYCLIC
 					gDio.HeatOn[index]                         := FALSE;
 					gDio.ZoneFans[index]                       := FALSE;
 				END_FOR;
+				
 				TempState                                      := TEMP_IDLE;
 			END_IF
 			
 		TEMP_AUTOTUNE:
+			gMainCtrl.Cmd.AutotuneHeaters               := FALSE;
+			
 			IF NOT (TempGroup.MpZones[0].Out.TuningDone AND 
 				TempGroup.MpZones[1].Out.TuningDone AND
 				TempGroup.MpZones[2].Out.TuningDone) THEN
