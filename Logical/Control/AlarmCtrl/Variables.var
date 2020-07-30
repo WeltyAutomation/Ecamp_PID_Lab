@@ -1,0 +1,5 @@
+VAR
+	AlarmFB : MpAlarmXCore;
+	AlarmUISetup : MpAlarmXListUISetupType;
+	AlarmListUI : MpAlarmXListUI;
+END_VAR

@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="Program" Language="IEC">MainCtrl</Object>
     <Object Type="Program" Language="IEC">TempCtrl</Object>
+    <Object Type="Program" Language="IEC">AlarmCtrl</Object>
   </Objects>
 </Package>

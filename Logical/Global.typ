@@ -23,4 +23,12 @@ TYPE
 		ZoneFans : ARRAY[0..2]OF BOOL;
 		DisturbanceFan : BOOL;
 	END_STRUCT;
+	Error_type : 	STRUCT 
+		ErrorActive : BOOL;
+		ErrorSetID : UDINT;
+		ErrorResetID : UDINT;
+		ErrorName : STRING[100];
+		LastState : MainState_enum;
+		ErrorAcknowledgeID : UDINT;
+	END_STRUCT;
 END_TYPE
