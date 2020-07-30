@@ -63,10 +63,26 @@ PROGRAM _CYCLIC
 				END_FOR;
 				TempState                                      := TEMP_IDLE;
 			END_IF
+			
 		TEMP_AUTOTUNE:
-			FOR index := 0 TO 2 DO
-				TempGroup.MpZones[index].In.Tune := TRUE;
-			END_FOR;	
+			IF NOT (TempGroup.MpZones[0].Out.TuningDone AND 
+				TempGroup.MpZones[1].Out.TuningDone AND
+				TempGroup.MpZones[2].Out.TuningDone) THEN
+				
+				FOR index := 0 TO 2 DO
+					TempGroup.MpZones[index].In.Tune    := TRUE;
+					gDio.HeatOn[index]                  := TempGroup.MpZones[index].Out.Heat;
+					gDio.ZoneFans[index]                := TempGroup.MpZones[index].Out.Cool;
+				END_FOR;
+			ELSE
+				FOR index := 0 TO 2 DO
+					TempGroup.MpZones[index].In.Control := FALSE;
+					gDio.HeatOn[index]                  := FALSE;
+					gDio.ZoneFans[index]                := FALSE;
+				END_FOR;
+				TempState                               := TEMP_IDLE;
+			END_IF;
+
 			
 		TEMP_ERROR:
 	END_CASE;
