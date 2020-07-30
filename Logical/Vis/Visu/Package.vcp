@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?AutomationStudio Version="4.0.14.207"?>
+<?AutomationStudio Version="4.7.3.93 SP"?>
 <Project xmlns="http://br-automation.co.at/AS/VC/Project">
   <Property Name="Backlight" Value="False"/>
-  <Property Name="BacklightIgnoreFirst" Value="False"/>
   <Property Name="BeepKey" Value="False"/>
   <Property Name="BeepTouch" Value="False"/>
   <Property Name="CalibrationDatapoint" Value="None"/>
@@ -13,7 +12,7 @@
   <Property Name="DefaultKeyLevelNumeric" Value="None"/>
   <Property Name="DefaultKeyLevelString" Value="None"/>
   <Property Name="DefaultLanguage" Value="en"/>
-  <Property Name="DefaultPage" Value="Source[local].Page[tmpl10_MainPage]"/>
+  <Property Name="DefaultPage" Value="Source[local].Page[tmpl00_StartPage]"/>
   <Property Name="DefaultStyleSheet" Value="Source[local].StyleSheet[Default]"/>
   <Property Name="FocusControlDatapoint" Value="None"/>
   <Property Name="FontAntialiasing" Value="Off"/>
@@ -29,8 +28,8 @@
   <Property Name="LanguageCurrentDatapoint" Value="None"/>
   <Property Name="LifeSignDatapoint" Value="None"/>
   <Property Name="ManualStart" Value="False"/>
-  <Property Name="PageChangeDatapoint" Value="None"/>
-  <Property Name="PageCurrentDatapoint" Value="None"/>
+  <Property Name="PageChangeDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.ChangePage]"/>
+  <Property Name="PageCurrentDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Page]"/>
   <Property Name="ScreenSaver_Activate" Value="False"/>
   <Property Name="TargetResourceRoot" Value=""/>
   <Property Name="TextLengthOverrunBackColor" Value="None"/>
