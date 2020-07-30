@@ -8,6 +8,7 @@
       <Parameter ID="InternetAddress" Value="169.254.188.1" />
       <Parameter ID="SubnetMask" Value="255.255.0.0" />
     </Connector>
+    <Parameter ID="VcObjectName" Value="Visu" />
   </Module>
   <Module Name="5PP5CP_US15_02" Type="5PP5CP.US15-02" Version="2.0.6.0">
     <Connection Connector="SY" TargetModule="5PP520.1505-00" TargetConnector="SY1" />

@@ -14,7 +14,7 @@ TYPE
 		SetTemperature : REAL;
 		ActualTemperature : REAL;
 		Control : BOOL;
-		Parameters : MpTempControllerParType;
+		Parameters : MpTempControllerParType := (Tuning:=(Mode:=mpTEMP_TUNING_MODE_HEAT_COOL,SetPointHeat:=80,SetPointCool:=50));
 		Tune : BOOL;
 	END_STRUCT;
 	TempZoneOutput_type : 	STRUCT 
@@ -40,5 +40,9 @@ TYPE
 		AmbientTemp : ARRAY[0..3]OF REAL;
 		CurrentTemp : ARRAY[0..3]OF REAL;
 		AtTemp : ARRAY[0..3]OF BOOL;
+		TuningInProgress : BOOL;
+		SetTemp : ARRAY[0..3]OF REAL;
+		CoolOn : ARRAY[0..3]OF BOOL;
+		HeatOn : ARRAY[0..3]OF BOOL;
 	END_STRUCT;
 END_TYPE
