@@ -12,6 +12,13 @@
   <Module Name="5PP5CP_US15_02" Type="5PP5CP.US15-02" Version="2.0.6.0">
     <Connection Connector="SY" TargetModule="5PP520.1505-00" TargetConnector="SY1" />
     <Parameter ID="ConfigurationID" Value="PID_Lab_pp500" />
+    <Parameter ID="RemMemDevice" Value="PCI.1.PP5IF3.SRAM" />
+    <Parameter ID="RemMemSize" Value="100" />
+    <Parameter ID="RemanentGlobalPvSize" Value="50" />
+    <Parameter ID="VolatileGlobalPvSize" Value="200000" />
+    <Parameter ID="TimerDeviceType" Value="EPLX2X" />
+    <Parameter ID="TimerDevice" Value="5PP5IF.FPLM-00.IF1" />
+    <Parameter ID="TaskClassIdleTime" Value="2000" />
   </Module>
   <Module Name="5PP5IF.FPLM-00" Type="5PP5IF.FPLM-00" Version="2.4.0.0">
     <Connection Connector="SL" TargetModule="5PP520.1505-00" TargetConnector="SL1" />
