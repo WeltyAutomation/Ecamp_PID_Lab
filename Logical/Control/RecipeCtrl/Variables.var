@@ -1,0 +1,13 @@
+VAR CONSTANT
+	DEVICE_NAME : STRING[50] := '5PP5CP_US15_02';
+	AUTOTUNE_FILENAME : STRING[255] := 'Diagnostics/Autotune.xml';
+	PV_NAME : STRING[100] := 'TempCtrl:TempGroup';
+	EMPTY_FILENAME : STRING[255] := '';
+END_VAR
+VAR
+	RecipeState : RecipeCtrlState_enum := RECIPE_INIT;
+	RecipeXmlFB : MpRecipeXml;
+	RecipeCtrl : RecipeCtrl_type;
+	RecipeParFB : MpRecipeRegPar;
+	RecipeUIFB : MpRecipeUI;
+END_VAR

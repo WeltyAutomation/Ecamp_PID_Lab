@@ -12,6 +12,7 @@ TYPE
 		);
 	MainCtrl_type : 	STRUCT 
 		Cmd : MainCmd_type;
+		Status : MainStatus_type;
 	END_STRUCT;
 	MainCmd_type : 	STRUCT 
 		HeatOn : BOOL;
@@ -30,5 +31,29 @@ TYPE
 		ErrorName : STRING[100];
 		LastState : MainState_enum;
 		ErrorAcknowledgeID : UDINT;
+	END_STRUCT;
+	MainRecipeCtrl_type : 	STRUCT 
+		Par : RecipeParameters_type;
+		Cmd : RecipeCmd_type;
+		Status : RecipeStatus_type;
+	END_STRUCT;
+	RecipeParameters_type : 	STRUCT 
+		SelectedRecipeName : STRING[255];
+		UISetup : MpRecipeUISetupType;
+		UIConnect : MpRecipeUIConnectType;
+	END_STRUCT;
+	RecipeCmd_type : 	STRUCT 
+		LoadRecipe : BOOL;
+		SaveRecipe : BOOL;
+		SaveAutotune : BOOL;
+	END_STRUCT;
+	RecipeStatus_type : 	STRUCT 
+		CommandDone : BOOL;
+	END_STRUCT;
+	MainStatus_type : 	STRUCT 
+		AutotuneDone : BOOL;
+	END_STRUCT;
+	Recipe_type : 	STRUCT 
+		New_Member : USINT;
 	END_STRUCT;
 END_TYPE

@@ -72,7 +72,7 @@ PROGRAM _CYCLIC
 			END_IF
 			
 		TEMP_AUTOTUNE:
-			gMainCtrl.Cmd.AutotuneHeaters               := FALSE;
+			gMainCtrl.Cmd.AutotuneHeaters            := FALSE;
 			
 			IF TempStatus.TuningInProgress THEN
 				
@@ -83,7 +83,7 @@ PROGRAM _CYCLIC
 				END_FOR;
 				TempStatus.TuningInProgress          := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
 														     TempGroup.MpZones[1].Out.TuningDone AND
-														     TempGroup.MpZones[2].Out.TuningDone);
+															 TempGroup.MpZones[2].Out.TuningDone);
 				
 			ELSE
 				FOR index := 0 TO 2 DO
@@ -91,8 +91,8 @@ PROGRAM _CYCLIC
 					gDio.HeatOn[index]               := FALSE;
 					gDio.ZoneFans[index]             := FALSE;
 				END_FOR;
-				
-				TempState                               := TEMP_IDLE;
+				gMainCtrl.Status.AutotuneDone        := TRUE;
+				TempState                            := TEMP_IDLE;
 			END_IF;
 
 			

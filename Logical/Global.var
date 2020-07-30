@@ -8,6 +8,6 @@ VAR
 	gMainCtrl : MainCtrl_type;
 	gDio : DIO_type;
 	gAlarmUIConnect : MpAlarmXListUIConnectType;
-	gAlarmLink : MpComIdentType;
 	gError : Error_type;
+	gRecipeCtrl : MainRecipeCtrl_type;
 END_VAR
