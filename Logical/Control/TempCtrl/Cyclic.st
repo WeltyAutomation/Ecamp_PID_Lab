@@ -41,19 +41,10 @@ PROGRAM _CYCLIC
 	CASE TempState OF
 		TEMP_INIT:
 			TempState := TEMP_IDLE;
-		TEMP_IDLE:
-			FOR index := 0 TO 2 DO	  
-				TempGroup.MpZones[index].In.SetTemperature := IDLE_TEMP;
-				TempGroup.MpZones[index].In.Control        := TRUE;
-				gDio.HeatOn[index]                         := TempGroup.MpZones[index].Out.Heat;
-				gDio.ZoneFans[index]                       := TempGroup.MpZones[index].Out.Cool;
-			END_FOR;
-			
+		TEMP_IDLE:			
 			IF gMainCtrl.Cmd.HeatOn THEN
-				TempGroup.MpZones[index].In.Control := FALSE;
 				TempState                           := TEMP_ON;
 			ELSIF gMainCtrl.Cmd.AutotuneHeaters THEN
-				TempGroup.MpZones[index].In.Control := FALSE;
 				TempStatus.TuningInProgress         := TRUE;
 				TempState                           := TEMP_AUTOTUNE;				
 			END_IF
@@ -82,7 +73,6 @@ PROGRAM _CYCLIC
 			IF TempStatus.TuningInProgress THEN
 				
 				FOR index := 0 TO 2 DO
-					TempGroup.MpZones[index].In.Parameters.Tuning.Mode := mpTEMP_TUNING_MODE_HEAT_COOL;
 					TempGroup.MpZones[index].In.Tune                   := TRUE;
 					gDio.HeatOn[index]                                 := TempGroup.MpZones[index].Out.Heat;
 					gDio.ZoneFans[index]                               := TempGroup.MpZones[index].Out.Cool;
