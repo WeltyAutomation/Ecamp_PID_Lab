@@ -40,5 +40,6 @@ TYPE
 		AmbientTemp : ARRAY[0..3]OF REAL;
 		CurrentTemp : ARRAY[0..3]OF REAL;
 		AtTemp : ARRAY[0..3]OF BOOL;
+		TuningInProgress : BOOL;
 	END_STRUCT;
 END_TYPE
