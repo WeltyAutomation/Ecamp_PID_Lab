@@ -73,19 +73,19 @@ PROGRAM _CYCLIC
 			IF TempStatus.TuningInProgress THEN
 				
 				FOR index := 0 TO 2 DO
-					TempGroup.MpZones[index].In.Tune                   := TRUE;
-					gDio.HeatOn[index]                                 := TempGroup.MpZones[index].Out.Heat;
-					gDio.ZoneFans[index]                               := TempGroup.MpZones[index].Out.Cool;
+					TempGroup.MpZones[index].In.Tune := TRUE;
+					gDio.HeatOn[index]               := TempGroup.MpZones[index].Out.Heat;
+					gDio.ZoneFans[index]             := TempGroup.MpZones[index].Out.Cool;
 				END_FOR;
-				TempStatus.TuningInProgress                            := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
-														               		   TempGroup.MpZones[1].Out.TuningDone AND
-																			   TempGroup.MpZones[2].Out.TuningDone);
+				TempStatus.TuningInProgress          := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
+														     TempGroup.MpZones[1].Out.TuningDone AND
+														     TempGroup.MpZones[2].Out.TuningDone);
 				
 			ELSE
 				FOR index := 0 TO 2 DO
-					TempGroup.MpZones[index].In.Control := FALSE;
-					gDio.HeatOn[index]                  := FALSE;
-					gDio.ZoneFans[index]                := FALSE;
+					TempGroup.MpZones[index].In.Tune := FALSE;
+					gDio.HeatOn[index]               := FALSE;
+					gDio.ZoneFans[index]             := FALSE;
 				END_FOR;
 				
 				TempState                               := TEMP_IDLE;
