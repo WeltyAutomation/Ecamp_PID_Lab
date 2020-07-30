@@ -12,6 +12,10 @@ PROGRAM _CYCLIC
 	FOR index := 0 TO 2 DO
 	  
 		TempStatus.CurrentTemp[index]                 := gDio.ZoneTemps[index] / 10;
+		TempStatus.SetTemp[index]                     := TempControllerFBs[index].Info.SetTemperature;
+		TempStatus.HeatOn[index]                      := TempGroup.MpZones[index].Out.Heat;
+		TempStatus.CoolOn[index]                      := TempGroup.MpZones[index].Out.Cool;
+		
 		TempGroup.MpZones[index].In.ActualTemperature := TempStatus.CurrentTemp[index];
 		TempStatus.AtTemp[index]                      := (TempGroup.MpZones[index].In.ActualTemperature = TARGET_TEMP);
 	
@@ -27,9 +31,9 @@ PROGRAM _CYCLIC
 		
 		TempGroup.MpZones[index].Out.Active           := TempControllerFBs[index].Active;
 		TempGroup.MpZones[index].Out.ControlActive    := TempControllerFBs[index].ControlActive;
-		TempGroup.MpZones[index].Out.Cool             := TempControllerFBs[index].Cool;
 		TempGroup.MpZones[index].Out.Error            := TempControllerFBs[index].Error;
 		TempGroup.MpZones[index].Out.Heat             := TempControllerFBs[index].Heat;
+		TempGroup.MpZones[index].Out.Cool             := TempControllerFBs[index].Cool;
 		TempGroup.MpZones[index].Out.Info             := TempControllerFBs[index].Info;
 		TempGroup.MpZones[index].Out.StatusID         := TempControllerFBs[index].StatusID;
 		TempGroup.MpZones[index].Out.UpdateDone       := TempControllerFBs[index].UpdateDone;	
