@@ -1,0 +1,18 @@
+VAR CONSTANT
+	EMPTY_FILENAME : STRING[255] := '';
+END_VAR
+VAR
+	PV_NAME : {REDUND_UNREPLICABLE} STRING[100] := 'TempCtrl:TempGroup';
+END_VAR
+VAR CONSTANT
+	AUTOTUNE_FILENAME_INDEX : USINT := 0;
+	DEVICE_NAME : STRING[50] := 'Recipes';
+END_VAR
+VAR
+	RecipeUIFB : MpRecipeUI;
+	RecipeParFB : MpRecipeRegPar;
+	RecipeCtrl : RecipeCtrl_type;
+	RecipeXmlFB : MpRecipeXml;
+	RecipeState : RecipeCtrlState_enum := RECIPE_INIT;
+	RecipeNames : ARRAY[0..12] OF STRING[255] := ['Autotune.xml','Tune_01.xml','Tune_02.xml','Tune_03.xml','Tune_04.xml','Tune_05.xml','Tune_06.xml','Tune_07.xml','Tune_08.xml','Tune_09.xml','Tune_10.xml','Tune_11.xml','Tune_12.xml'];
+END_VAR
