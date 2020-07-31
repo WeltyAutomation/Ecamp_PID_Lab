@@ -17,6 +17,7 @@ TYPE
 	MainCmd_type : 	STRUCT 
 		HeatOn : BOOL;
 		AutotuneHeaters : BOOL;
+		ErrorReset : BOOL;
 	END_STRUCT;
 	DIO_type : 	STRUCT 
 		ZoneTemps : ARRAY[0..3]OF INT;

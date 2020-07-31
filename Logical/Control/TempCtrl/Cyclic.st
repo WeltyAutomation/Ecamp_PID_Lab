@@ -9,7 +9,13 @@ PROGRAM _CYCLIC
 	TempControllerFBs[1].MpLink := ADR(gTempController_2);
 	TempControllerFBs[2].MpLink := ADR(gTempController_3);
 	
+	TempGroup.Cmd.ErrorReset    := gMainCtrl.Cmd.ErrorReset;
+	
+	
 	FOR index := 0 TO 2 DO
+		IF TempGroup.MpZones[index].Out.Error THEN 
+			TempState := TEMP_ERROR;
+		END_IF
 		
 		IF gTuneRecipe.Update THEN
 			TempGroup.MpZones[index].In.Update := TRUE;
@@ -26,8 +32,7 @@ PROGRAM _CYCLIC
 		TempStatus.AtTemp[index]                      := (TempGroup.MpZones[index].In.ActualTemperature = TARGET_TEMP);
 	
 		TempControllerFBs[index].Enable               := TRUE;
-	
-		TempControllerFBs[index].ErrorReset           := TempGroup.MpZones[index].In.ErrorReset;
+		TempControllerFBs[index].ErrorReset           := TempGroup.Cmd.ErrorReset;
 		TempControllerFBs[index].Parameters           := ADR(TempGroup.MpZones[index].In.Parameters);
 		TempControllerFBs[index].Update               := TempGroup.MpZones[index].In.Update;
 		TempControllerFBs[index].SetTemperature       := TempGroup.MpZones[index].In.SetTemperature;
@@ -47,9 +52,82 @@ PROGRAM _CYCLIC
 		
 	END_FOR;
 	
+	IF TempGroup.MtZone.Profile.Out.Error THEN 
+		TempState := TEMP_ERROR;
+	END_IF
+	
+	MtTempProfileFB.Enable                       := TRUE;
+	MtTempProfileFB.AmbientTemperature           := gAmbientTemperature;
+	MtTempProfileFB.MaxHeatOut                   := TempGroup.MtZone.Profile.In.MaxHeatOut;
+	MtTempProfileFB.MaxCoolOut                   := TempGroup.MtZone.Profile.In.MaxCoolOut;
+	MtTempProfileFB.Mode                         := TempGroup.MtZone.Profile.In.Mode;
+	MtTempProfileFB.Update                       := TempGroup.MtZone.Profile.In.Update;
+	MtTempProfileFB.AmbientTemperature           := gAmbientTemperature;
+	MtTempProfileFB.SetPointTemperature          := TempGroup.MtZone.Profile.In.SetPointTemperature;
+	MtTempProfileFB.Start                        := TempGroup.MtZone.Profile.In.Start;
+	MtTempProfileFB.Abort                        := TempGroup.MtZone.Profile.In.Abort;
+	MtTempProfileFB.InitTemperature              := gAmbientTemperature;
+	MtTempProfileFB.Init                         := TempGroup.MtZone.Profile.In.Init;
+	
+	MtTempControllerFB.Enable                      := TRUE;
+	MtTempControllerFB.PIDParameters               := TempGroup.MtZone.Controller.In.PIDParameters;
+	MtTempControllerFB.MaxHeatOut                  := TempGroup.MtZone.Controller.In.MaxHeatOut;
+	MtTempControllerFB.MaxCoolOut                  := TempGroup.MtZone.Controller.In.MaxCoolOut;
+	MtTempControllerFB.Update                      := TempGroup.MtZone.Controller.In.Update;
+	MtTempControllerFB.SetTemperature              := TempGroup.MtZone.Controller.In.SetTemperature;
+	MtTempControllerFB.ActTemperature              := TempGroup.MtZone.Controller.In.ActTemperature;
+	MtTempControllerFB.FeedForwardCool             := TempGroup.MtZone.Controller.In.FeedForwardCool;
+	MtTempControllerFB.FeedForwardHeat             := TempGroup.MtZone.Controller.In.FeedForwardHeat;
+	MtTempControllerFB.ControlStatusIn             := TempGroup.MtZone.Controller.In.ControlStatusIn;
+	
+	MtTempTuningFB.Enable                          := TRUE;
+	MtTempTuningFB.AmbientTemperature              := gAmbientTemperature;
+	MtTempTuningFB.ActTemperature                  := TempGroup.MtZone.Tuning.In.ActTemperature;
+	MtTempTuningFB.HeatIn                          := TempGroup.MtZone.Tuning.In.HeatIn;
+	MtTempTuningFB.CoolIn                          := TempGroup.MtZone.Tuning.In.CoolIn;
+	MtTempTuningFB.Mode                            := TempGroup.MtZone.Tuning.In.Mode;
+	MtTempTuningFB.SetPointTemperature             := TempGroup.MtZone.Tuning.In.SetPointTemperature;
+	MtTempTuningFB.CoolDownTemperature             := TempGroup.MtZone.Tuning.In.CoolDownTemperature;
+	MtTempTuningFB.StartSingleZone                 := TempGroup.MtZone.Tuning.In.StartSingleZone;
+	MtTempTuningFB.Abort                           := TempGroup.MtZone.Cmd.Abort;
+	
+	TempGroup.MtZone.Profile.Out.Active            := MtTempProfileFB.Active;
+	TempGroup.MtZone.Profile.Out.Error             := MtTempProfileFB.Error;
+	TempGroup.MtZone.Profile.Out.StatusID          := MtTempProfileFB.StatusID;
+	TempGroup.MtZone.Profile.Out.UpdateDone        := MtTempProfileFB.UpdateDone;
+	TempGroup.MtZone.Profile.Out.SetTemperature    := MtTempProfileFB.SetTemperature;
+	TempGroup.MtZone.Profile.Out.FeedForwardHeat   := MtTempProfileFB.FeedForwardHeat;
+	TempGroup.MtZone.Profile.Out.FeedForwardCool   := MtTempProfileFB.FeedForwardCool;
+	TempGroup.MtZone.Profile.Out.State             := MtTempProfileFB.State;
+	TempGroup.MtZone.Profile.Out.InSetPoint        := MtTempProfileFB.InSetPoint;
+	TempGroup.MtZone.Profile.Out.InitDone          := MtTempProfileFB.InitDone;
+	
+	TempGroup.MtZone.Controller.Out.Active         := MtTempControllerFB.Active;
+	TempGroup.MtZone.Controller.Out.Error          := MtTempControllerFB.Error;
+	TempGroup.MtZone.Controller.Out.StatusID       := MtTempControllerFB.StatusID;
+	TempGroup.MtZone.Controller.Out.UpdateDone     := MtTempControllerFB.UpdateDone;
+	TempGroup.MtZone.Controller.Out.HeatOut        := MtTempControllerFB.HeatOut;
+	TempGroup.MtZone.Controller.Out.CoolOut        := MtTempControllerFB.CoolOut;
+	
+	TempGroup.MtZone.Tuning.Out.Active             := MtTempTuningFB.Active;
+	TempGroup.MtZone.Tuning.Out.Error              := MtTempTuningFB.Error;
+	TempGroup.MtZone.Tuning.Out.StatusID           := MtTempTuningFB.StatusID;
+	TempGroup.MtZone.Tuning.Out.SetTemperature     := MtTempTuningFB.SetTemperature;
+	TempGroup.MtZone.Tuning.Out.FeedForwardHeat    := MtTempTuningFB.FeedForwardHeat;
+	TempGroup.MtZone.Tuning.Out.FeedForwardCool    := MtTempTuningFB.FeedForwardCool;
+	TempGroup.MtZone.Tuning.Out.TuningActive       := MtTempTuningFB.TuningActive;
+	TempGroup.MtZone.Tuning.Out.TuningDone         := MtTempTuningFB.TuningDone;
+	TempGroup.MtZone.Tuning.Out.State              := MtTempTuningFB.State;
+	TempGroup.MtZone.Tuning.Out.PIDParameters      := MtTempTuningFB.PIDParameters;
+	TempGroup.MtZone.Tuning.Out.PIDParametersValid := MtTempTuningFB.PIDParametersValid;
+	TempGroup.MtZone.Tuning.Out.ControlStatusOut   := MtTempTuningFB.ControlStatusOut;
+	
 	CASE TempState OF
 		TEMP_INIT:
-			TempState := TEMP_IDLE;
+			TempGroup.MtZone.Profile.In.Init := TRUE;
+			IF EDGEPOS(TempGroup.MtZone.Profile.Out.InitDone) THEN 
+				TempState := TEMP_IDLE;
+			END_IF			
 		TEMP_IDLE:			
 			IF gMainCtrl.Cmd.HeatOn THEN
 				TempState                           := TEMP_ON;
@@ -103,10 +181,24 @@ PROGRAM _CYCLIC
 
 			
 		TEMP_ERROR:
+			FOR index := 0 TO 2 DO
+				TempGroup.MpZones[index].In.Tune     := FALSE;
+			END_FOR;		
+			FOR index := 0 TO 3 DO
+				gDio.HeatOn[index]                   := FALSE;
+				gDio.ZoneFans[index]                 := FALSE;
+			END_FOR;
+			TempGroup.MtZone.Cmd.Abort               := TRUE;
+			IF TempGroup.Cmd.ErrorReset THEN
+				TempGroup.MtZone.Cmd.Abort           := FALSE;
+	  			TempState                            := TEMP_IDLE;
+			END_IF;
 	END_CASE;
 
 	TempControllerFBs[0]();
 	TempControllerFBs[1]();
 	TempControllerFBs[2]();
-	
+	MtTempControllerFB();
+	MtTempProfileFB();
+	MtTempTuningFB();
 END_PROGRAM

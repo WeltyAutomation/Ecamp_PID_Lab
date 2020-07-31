@@ -1,4 +1,5 @@
 VAR
+	gAmbientTemperature : REAL := 28;
 	gMainState : MainState_enum := MAIN_INIT;
 END_VAR
 VAR CONSTANT

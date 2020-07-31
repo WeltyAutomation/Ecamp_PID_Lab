@@ -4,4 +4,7 @@ VAR
 	TempControllerFBs : ARRAY[0..2] OF MpTempController;
 	TempState : TempCtrlState_enum;
 	TempStatus : TempStatus_type;
+	MtTempControllerFB : MTTempController;
+	MtTempProfileFB : MTTempProfile;
+	MtTempTuningFB : MTTempTuning;
 END_VAR

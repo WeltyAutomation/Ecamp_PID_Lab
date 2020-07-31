@@ -1,0 +1,56 @@
+(*Error: MTTemp*)
+VAR CONSTANT
+	mtTMP_ERR_PLANT_PAR_INVALID : DINT := -1058008184; (*One of the plant parameters for heating or cooling is invalid. *)
+END_VAR
+(*Warning: MTTemp*)
+VAR CONSTANT
+	mtTMP_WRN_PLANT_PAR_INVALID : DINT := -2131750008; (*One of the plant parameters for heating or cooling is invalid. *)
+END_VAR
+(*Error: MTTempSimulation*)
+VAR CONSTANT
+	mtTMP_ERR_NUM_OF_ZONES_INVALID : DINT := -1058008183; (*The number of selected zones is invalid.*)
+END_VAR
+(*Error: MTTempTuning*)
+VAR CONSTANT
+	mtTMP_ERR_SET_POINT_TEMP_TOO_LOW : DINT := -1058008181; (*The temperature setpoint for tuning is too low.*)
+	mtTMP_ERR_COOL_DOWN_TEMP_INVALID : DINT := -1058008180; (*The cool-down temperature for tuning is invalid.*)
+	mtTMP_ERR_SYSTEM_NOT_SETTLED : DINT := -1058008179; (*The system is not settled.*)
+	mtTMP_ERR_CONTROL_STATUS_INVALID : DINT := -1058008178; (*The ControlStatusIn parameter is invalid.*)
+END_VAR
+(*Warning: MTTempTuning*)
+VAR CONSTANT
+	mtTMP_WRN_SYSTEM_INACCURATE : DINT := -2131750001; (*The system could not be identified completly, since it does not match the typical behaviour of temperature plants.*)
+	mtTMP_WRN_DEFICIENT_IDENT_INFO : DINT := -2131750000; (*The chosen MaxHeatOut seems too high for the given SetPointTemperature.*)
+	mtTMP_WRN_SYSTEM_NOT_SETTLED : DINT := -2131750007; (*The system is not settled.*)
+	mtTMP_WRN_COOL_DOWN_TEMP_INVALID : DINT := -2131750006; (*The cool-down temperature for tuning is invalid.*)
+	mtTMP_ERR_SET_POINT_TEMP_INVALID : DINT := -1058008182; (*The temperature setpoint is invalid.*)
+END_VAR
+(*Error: MTTempTuning and MTTempProfile*)
+VAR CONSTANT
+	mtTMP_ERR_AMBIENT_TEMP_INVALID : DINT := -1058008177; (*The selected ambient temperature is invalid.*)
+	mtTMP_ERR_MODE_INVALID : DINT := -1058008176; (*The selected mode is invalid.*)
+END_VAR
+(*Warning: MTTempTuning and MTTempProfile*)
+VAR CONSTANT
+	mtTMP_WRN_SET_POINT_TEMP_INVALID : DINT := -2131750004; (*The temperature setpoint is invalid.*)
+	mtTMP_WRN_MODE_INVALID : DINT := -2131750003; (*The selected mode is invalid.*)
+	mtTMP_WRN_PREDICTION_SWITCHING : DINT := -2131750005; (*Error predicting the switchover point from cooling to heating.*)
+END_VAR
+(*Error: MTTempController and MTTempProfile*)
+VAR CONSTANT
+	mtTMP_ERR_OUTPUT_LIMITS_INVALID : DINT := -1058008175; (*The manipulated variable limit for heating or cooling is invalid (MaxHeatOut, MaxCoolOut).*)
+END_VAR
+(*Warning: MTTempController and MTTempProfile*)
+VAR CONSTANT
+	mtTMP_WRN_OUTPUT_LIMITS_INVALID : DINT := -2131750002; (*The manipulated variable limit for heating or cooling is invalid (MaxHeatOut, MaxCoolOut).*)
+END_VAR
+(*Error: MTTempProfile*)
+VAR CONSTANT
+	mtTMP_ERR_PROFILE_PAR_INVALID : DINT := -1058008174; (*One of the profile parameters for heating or cooling is invalid. *)
+	mtTMP_ERR_INIT_TEMP_INVALID : DINT := -1058008171; (*The temperature value for initialization is invalid.*)
+END_VAR
+(*Warning: MTTempProfile*)
+VAR CONSTANT
+	mtTMP_WRN_PROFILE_PAR_INVALID : DINT := -2131749999; (*One of the profile parameters for heating or cooling is invalid.*)
+	mtTMP_WRN_SYSTEM_IN_SATURATION : DINT := -2131749998; (*The chosen SetPointTemperature or CoolDownTemperature cannot be reached with the given MaxHeatOut or MaxCoolOut.*)
+END_VAR
