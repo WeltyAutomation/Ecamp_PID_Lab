@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA>
+	<Element Name="TempCtrl:TempGroup" Type="PvParameter">
+		<Group ID="TempCtrl:TempGroup">
+			<Group ID="MpZones">
+				<Group ID="[0]">
+					<Group ID="In">
+						<Property ID="Enable" DataType="BOOL" Value="false" />
+						<Property ID="ErrorReset" DataType="BOOL" Value="false" />
+						<Property ID="Update" DataType="BOOL" Value="false" />
+						<Property ID="SetTemperature" DataType="REAL" Value="0" />
+						<Property ID="ActualTemperature" DataType="REAL" Value="28" />
+						<Property ID="Control" DataType="BOOL" Value="false" />
+						<Group ID="Parameters">
+							<Group ID="PID">
+								<Group ID="Heat">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+							</Group>
+							<Group ID="Tuning">
+								<Property ID="Mode" DataType="DINT" Value="2" />
+								<Property ID="SetPointHeat" DataType="REAL" Value="80" />
+								<Property ID="SetPointCool" DataType="REAL" Value="50" />
+							</Group>
+							<Group ID="Profile">
+								<Group ID="Heat">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Property ID="AttenuationFactor" DataType="REAL" Value="1" />
+							</Group>
+							<Group ID="ToleranceBand">
+								<Property ID="Lower" DataType="REAL" Value="2" />
+								<Property ID="Upper" DataType="REAL" Value="2" />
+							</Group>
+							<Group ID="Hysteresis">
+								<Property ID="Mode" DataType="DINT" Value="0" />
+								<Group ID="Band">
+									<Property ID="HeatToCool" DataType="REAL" Value="2" />
+									<Property ID="CoolToHeat" DataType="REAL" Value="2" />
+								</Group>
+							</Group>
+						</Group>
+						<Property ID="Tune" DataType="BOOL" Value="false" />
+					</Group>
+					<Group ID="Out">
+						<Property ID="Active" DataType="USINT" Value="1" />
+						<Property ID="Error" DataType="USINT" Value="0" />
+						<Property ID="StatusID" DataType="DINT" Value="0" />
+						<Property ID="UpdateDone" DataType="USINT" Value="0" />
+						<Property ID="Heat" DataType="BOOL" Value="false" />
+						<Property ID="Cool" DataType="BOOL" Value="false" />
+						<Property ID="ControlActive" DataType="USINT" Value="0" />
+						<Group ID="Info">
+							<Property ID="SetTemperature" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardHeat" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardCool" DataType="REAL" Value="0" />
+							<Property ID="InTolerance" DataType="BOOL" Value="false" />
+							<Group ID="Tuning">
+								<Property ID="State" DataType="DINT" Value="0" />
+								<Group ID="PIDParameters">
+									<Group ID="Heat">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="SystemParameters">
+									<Group ID="Heat">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="ProfileParameters">
+									<Group ID="Heat">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+								</Group>
+								<Group ID="Quality">
+									<Property ID="Heat" DataType="USINT" Value="0" />
+									<Property ID="Cool" DataType="USINT" Value="0" />
+								</Group>
+								<Group ID="TemperatureFilter">
+									<Property ID="NoiseReduction" DataType="REAL" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="Profile">
+								<Property ID="Active" DataType="BOOL" Value="false" />
+								<Property ID="InSetPoint" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Control">
+								<Property ID="ControlError" DataType="REAL" Value="0" />
+								<Property ID="ProportionalPart" DataType="REAL" Value="0" />
+								<Property ID="IntegrationPart" DataType="REAL" Value="0" />
+								<Property ID="DerivativePart" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureFiltered" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureDerivative" DataType="REAL" Value="0" />
+								<Property ID="TemperatureFilterUsed" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Simulation">
+								<Property ID="HeatValue" DataType="REAL" Value="0" />
+								<Property ID="CoolValue" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperature" DataType="REAL" Value="0" />
+							</Group>
+							<Group ID="Diag">
+								<Group ID="StatusID">
+									<Property ID="ID" DataType="DINT" Value="0" />
+									<Property ID="Severity" DataType="DINT" Value="0" />
+									<Property ID="Code" DataType="UINT" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="HCM">
+								<Property ID="AverageCurrentL1" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL2" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL3" DataType="REAL" Value="0" />
+							</Group>
+						</Group>
+						<Property ID="TuningDone" DataType="BOOL" Value="false" />
+					</Group>
+				</Group>
+				<Group ID="[1]">
+					<Group ID="In">
+						<Property ID="Enable" DataType="BOOL" Value="false" />
+						<Property ID="ErrorReset" DataType="BOOL" Value="false" />
+						<Property ID="Update" DataType="BOOL" Value="false" />
+						<Property ID="SetTemperature" DataType="REAL" Value="0" />
+						<Property ID="ActualTemperature" DataType="REAL" Value="28" />
+						<Property ID="Control" DataType="BOOL" Value="false" />
+						<Group ID="Parameters">
+							<Group ID="PID">
+								<Group ID="Heat">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+							</Group>
+							<Group ID="Tuning">
+								<Property ID="Mode" DataType="DINT" Value="2" />
+								<Property ID="SetPointHeat" DataType="REAL" Value="80" />
+								<Property ID="SetPointCool" DataType="REAL" Value="50" />
+							</Group>
+							<Group ID="Profile">
+								<Group ID="Heat">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Property ID="AttenuationFactor" DataType="REAL" Value="1" />
+							</Group>
+							<Group ID="ToleranceBand">
+								<Property ID="Lower" DataType="REAL" Value="2" />
+								<Property ID="Upper" DataType="REAL" Value="2" />
+							</Group>
+							<Group ID="Hysteresis">
+								<Property ID="Mode" DataType="DINT" Value="0" />
+								<Group ID="Band">
+									<Property ID="HeatToCool" DataType="REAL" Value="2" />
+									<Property ID="CoolToHeat" DataType="REAL" Value="2" />
+								</Group>
+							</Group>
+						</Group>
+						<Property ID="Tune" DataType="BOOL" Value="false" />
+					</Group>
+					<Group ID="Out">
+						<Property ID="Active" DataType="USINT" Value="1" />
+						<Property ID="Error" DataType="USINT" Value="0" />
+						<Property ID="StatusID" DataType="DINT" Value="0" />
+						<Property ID="UpdateDone" DataType="USINT" Value="0" />
+						<Property ID="Heat" DataType="BOOL" Value="false" />
+						<Property ID="Cool" DataType="BOOL" Value="false" />
+						<Property ID="ControlActive" DataType="USINT" Value="0" />
+						<Group ID="Info">
+							<Property ID="SetTemperature" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardHeat" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardCool" DataType="REAL" Value="0" />
+							<Property ID="InTolerance" DataType="BOOL" Value="false" />
+							<Group ID="Tuning">
+								<Property ID="State" DataType="DINT" Value="0" />
+								<Group ID="PIDParameters">
+									<Group ID="Heat">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="SystemParameters">
+									<Group ID="Heat">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="ProfileParameters">
+									<Group ID="Heat">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+								</Group>
+								<Group ID="Quality">
+									<Property ID="Heat" DataType="USINT" Value="0" />
+									<Property ID="Cool" DataType="USINT" Value="0" />
+								</Group>
+								<Group ID="TemperatureFilter">
+									<Property ID="NoiseReduction" DataType="REAL" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="Profile">
+								<Property ID="Active" DataType="BOOL" Value="false" />
+								<Property ID="InSetPoint" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Control">
+								<Property ID="ControlError" DataType="REAL" Value="0" />
+								<Property ID="ProportionalPart" DataType="REAL" Value="0" />
+								<Property ID="IntegrationPart" DataType="REAL" Value="0" />
+								<Property ID="DerivativePart" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureFiltered" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureDerivative" DataType="REAL" Value="0" />
+								<Property ID="TemperatureFilterUsed" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Simulation">
+								<Property ID="HeatValue" DataType="REAL" Value="0" />
+								<Property ID="CoolValue" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperature" DataType="REAL" Value="0" />
+							</Group>
+							<Group ID="Diag">
+								<Group ID="StatusID">
+									<Property ID="ID" DataType="DINT" Value="0" />
+									<Property ID="Severity" DataType="DINT" Value="0" />
+									<Property ID="Code" DataType="UINT" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="HCM">
+								<Property ID="AverageCurrentL1" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL2" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL3" DataType="REAL" Value="0" />
+							</Group>
+						</Group>
+						<Property ID="TuningDone" DataType="BOOL" Value="false" />
+					</Group>
+				</Group>
+				<Group ID="[2]">
+					<Group ID="In">
+						<Property ID="Enable" DataType="BOOL" Value="false" />
+						<Property ID="ErrorReset" DataType="BOOL" Value="false" />
+						<Property ID="Update" DataType="BOOL" Value="false" />
+						<Property ID="SetTemperature" DataType="REAL" Value="0" />
+						<Property ID="ActualTemperature" DataType="REAL" Value="27" />
+						<Property ID="Control" DataType="BOOL" Value="false" />
+						<Group ID="Parameters">
+							<Group ID="PID">
+								<Group ID="Heat">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="ProportionalGain" DataType="REAL" Value="6" />
+									<Property ID="IntegrationTime" DataType="REAL" Value="5" />
+									<Property ID="DerivativeTime" DataType="REAL" Value="1" />
+									<Property ID="FilterTime" DataType="REAL" Value="0.10000000149011612" />
+								</Group>
+							</Group>
+							<Group ID="Tuning">
+								<Property ID="Mode" DataType="DINT" Value="2" />
+								<Property ID="SetPointHeat" DataType="REAL" Value="80" />
+								<Property ID="SetPointCool" DataType="REAL" Value="50" />
+							</Group>
+							<Group ID="Profile">
+								<Group ID="Heat">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Group ID="Cool">
+									<Property ID="SlewRate" DataType="REAL" Value="5" />
+									<Property ID="FilterTime" DataType="REAL" Value="35" />
+									<Property ID="DelayTime" DataType="REAL" Value="1" />
+									<Property ID="QuickStart" DataType="BOOL" Value="false" />
+								</Group>
+								<Property ID="AttenuationFactor" DataType="REAL" Value="1" />
+							</Group>
+							<Group ID="ToleranceBand">
+								<Property ID="Lower" DataType="REAL" Value="2" />
+								<Property ID="Upper" DataType="REAL" Value="2" />
+							</Group>
+							<Group ID="Hysteresis">
+								<Property ID="Mode" DataType="DINT" Value="0" />
+								<Group ID="Band">
+									<Property ID="HeatToCool" DataType="REAL" Value="2" />
+									<Property ID="CoolToHeat" DataType="REAL" Value="2" />
+								</Group>
+							</Group>
+						</Group>
+						<Property ID="Tune" DataType="BOOL" Value="false" />
+					</Group>
+					<Group ID="Out">
+						<Property ID="Active" DataType="USINT" Value="1" />
+						<Property ID="Error" DataType="USINT" Value="0" />
+						<Property ID="StatusID" DataType="DINT" Value="0" />
+						<Property ID="UpdateDone" DataType="USINT" Value="0" />
+						<Property ID="Heat" DataType="BOOL" Value="false" />
+						<Property ID="Cool" DataType="BOOL" Value="false" />
+						<Property ID="ControlActive" DataType="USINT" Value="0" />
+						<Group ID="Info">
+							<Property ID="SetTemperature" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardHeat" DataType="REAL" Value="0" />
+							<Property ID="FeedForwardCool" DataType="REAL" Value="0" />
+							<Property ID="InTolerance" DataType="BOOL" Value="false" />
+							<Group ID="Tuning">
+								<Property ID="State" DataType="DINT" Value="0" />
+								<Group ID="PIDParameters">
+									<Group ID="Heat">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="ProportionalGain" DataType="REAL" Value="0" />
+										<Property ID="IntegrationTime" DataType="REAL" Value="0" />
+										<Property ID="DerivativeTime" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="SystemParameters">
+									<Group ID="Heat">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="Gain" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant1" DataType="REAL" Value="0" />
+										<Property ID="TimeConstant2" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+									</Group>
+								</Group>
+								<Group ID="ProfileParameters">
+									<Group ID="Heat">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+									<Group ID="Cool">
+										<Property ID="SlewRate" DataType="REAL" Value="0" />
+										<Property ID="FilterTime" DataType="REAL" Value="0" />
+										<Property ID="DelayTime" DataType="REAL" Value="0" />
+										<Property ID="QuickStart" DataType="BOOL" Value="false" />
+									</Group>
+								</Group>
+								<Group ID="Quality">
+									<Property ID="Heat" DataType="USINT" Value="0" />
+									<Property ID="Cool" DataType="USINT" Value="0" />
+								</Group>
+								<Group ID="TemperatureFilter">
+									<Property ID="NoiseReduction" DataType="REAL" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="Profile">
+								<Property ID="Active" DataType="BOOL" Value="false" />
+								<Property ID="InSetPoint" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Control">
+								<Property ID="ControlError" DataType="REAL" Value="0" />
+								<Property ID="ProportionalPart" DataType="REAL" Value="0" />
+								<Property ID="IntegrationPart" DataType="REAL" Value="0" />
+								<Property ID="DerivativePart" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureFiltered" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperatureDerivative" DataType="REAL" Value="0" />
+								<Property ID="TemperatureFilterUsed" DataType="BOOL" Value="false" />
+							</Group>
+							<Group ID="Simulation">
+								<Property ID="HeatValue" DataType="REAL" Value="0" />
+								<Property ID="CoolValue" DataType="REAL" Value="0" />
+								<Property ID="ActualTemperature" DataType="REAL" Value="0" />
+							</Group>
+							<Group ID="Diag">
+								<Group ID="StatusID">
+									<Property ID="ID" DataType="DINT" Value="0" />
+									<Property ID="Severity" DataType="DINT" Value="0" />
+									<Property ID="Code" DataType="UINT" Value="0" />
+								</Group>
+							</Group>
+							<Group ID="HCM">
+								<Property ID="AverageCurrentL1" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL2" DataType="REAL" Value="0" />
+								<Property ID="AverageCurrentL3" DataType="REAL" Value="0" />
+							</Group>
+						</Group>
+						<Property ID="TuningDone" DataType="BOOL" Value="false" />
+					</Group>
+				</Group>
+			</Group>
+		</Group>
+	</Element>
+</DATA>

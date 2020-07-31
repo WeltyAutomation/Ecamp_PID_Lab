@@ -57,4 +57,31 @@ TYPE
 		AutotuneDone : BOOL;
 		AutotuneInProgress : BOOL;
 	END_STRUCT;
+	TuneRecipe_type : 	STRUCT 
+		ControlTune : ARRAY[0..3]OF ControlTune_type;
+		Update : BOOL;
+	END_STRUCT;
+	ControlTune_type : 	STRUCT 
+		PIDParameters : PIDParameterContainer_type;
+		ProfileParameters : ProfileParametersContainer_type;
+	END_STRUCT;
+	PIDParameterContainer_type : 	STRUCT 
+		Heat : PIDParameter_type;
+		Cool : PIDParameter_type;
+	END_STRUCT;
+	PIDParameter_type : 	STRUCT 
+		ProportionalGain : REAL;
+		IntegrationTime : REAL;
+		DerivativeTime : REAL;
+		FilterTime : REAL;
+	END_STRUCT;
+	ProfileParametersContainer_type : 	STRUCT 
+		Heat : ProfileParameters_type;
+		Cool : ProfileParameters_type;
+	END_STRUCT;
+	ProfileParameters_type : 	STRUCT 
+		SlewRate : REAL;
+		FilterTime : REAL;
+		DelayTime : REAL;
+	END_STRUCT;
 END_TYPE

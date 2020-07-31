@@ -40,7 +40,6 @@ PROGRAM _CYCLIC
 	RecipeCtrl.Par.Out.StatusID := RecipeParFB.StatusID;
 	RecipeCtrl.Par.Out.Info     := RecipeParFB.Info;
 	
-	
 
 	IF RecipeCtrl.Out.Error THEN
 		RecipeState := RECIPE_ERROR;
@@ -65,10 +64,12 @@ PROGRAM _CYCLIC
 			
 		RECIPE_SAVE:
 			IF NOT EDGEPOS(RecipeCtrl.Out.CommandDone) THEN
+				gRecipeCtrl.Status.CommandDone    := FALSE;
 				gRecipeCtrl.Status.SaveInProgress := TRUE;
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Save                := TRUE;
 			ELSE
+				gRecipeCtrl.Status.CommandDone    := TRUE;
 				gRecipeCtrl.Status.SaveInProgress := FALSE;
 				RecipeCtrl.In.Save                := FALSE;
 				RecipeCtrl.In.FileName            := EMPTY_FILENAME;
@@ -77,10 +78,14 @@ PROGRAM _CYCLIC
 			
 		RECIPE_LOAD:
 			IF NOT EDGEPOS(RecipeCtrl.Out.CommandDone) THEN
+				gRecipeCtrl.Status.CommandDone    := FALSE;
 				gRecipeCtrl.Status.LoadInProgress := TRUE;
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Load                := TRUE;
 			ELSE
+				gRecipeCtrl.Status.CommandDone    := TRUE;
+				gIndexOfLastLoadedTune            := gRecipeCtrl.Par.RecipeSaveIndex;
+				gTuneRecipe.Update                := TRUE;
 				gRecipeCtrl.Status.LoadInProgress := FALSE;
 				RecipeCtrl.In.Load                := FALSE;
 				RecipeCtrl.In.FileName            := EMPTY_FILENAME;

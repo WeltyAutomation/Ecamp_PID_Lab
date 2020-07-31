@@ -10,6 +10,12 @@ PROGRAM _CYCLIC
 	TempControllerFBs[2].MpLink := ADR(gTempController_3);
 	
 	FOR index := 0 TO 2 DO
+		
+		IF gTuneRecipe.Update THEN
+			TempGroup.MpZones[index].In.Update := TRUE;
+			UpdateControlParameters(gTuneRecipe.ControlTune[index], ADR(TempGroup.MpZones[index].In.Parameters));
+			gTuneRecipe.Update := FALSE;
+		END_IF;
 	  
 		TempStatus.CurrentTemp[index]                 := gDio.ZoneTemps[index] / 10;
 		TempStatus.SetTemp[index]                     := TempControllerFBs[index].Info.SetTemperature;
@@ -37,8 +43,7 @@ PROGRAM _CYCLIC
 		TempGroup.MpZones[index].Out.Info             := TempControllerFBs[index].Info;
 		TempGroup.MpZones[index].Out.StatusID         := TempControllerFBs[index].StatusID;
 		TempGroup.MpZones[index].Out.UpdateDone       := TempControllerFBs[index].UpdateDone;	
-		TempGroup.MpZones[index].Out.TuningDone       := TempControllerFBs[index].TuningDone;
-		
+		TempGroup.MpZones[index].Out.TuningDone       := TempControllerFBs[index].TuningDone;		
 		
 	END_FOR;
 	
@@ -90,6 +95,7 @@ PROGRAM _CYCLIC
 					TempGroup.MpZones[index].In.Tune := FALSE;
 					gDio.HeatOn[index]               := FALSE;
 					gDio.ZoneFans[index]             := FALSE;
+					UpdateGlobalParameters(ADR(gTuneRecipe.ControlTune[index]), TempGroup.MpZones[index].Out.Info);
 				END_FOR;
 				gMainCtrl.Status.AutotuneDone        := TRUE;
 				TempState                            := TEMP_IDLE;
