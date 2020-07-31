@@ -40,7 +40,6 @@ PROGRAM _CYCLIC
 	RecipeCtrl.Par.Out.StatusID := RecipeParFB.StatusID;
 	RecipeCtrl.Par.Out.Info     := RecipeParFB.Info;
 	
-	
 
 	IF RecipeCtrl.Out.Error THEN
 		RecipeState := RECIPE_ERROR;
@@ -81,6 +80,8 @@ PROGRAM _CYCLIC
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Load                := TRUE;
 			ELSE
+				gIndexOfLastLoadedTune            := gRecipeCtrl.Par.RecipeSaveIndex;
+				gTuneRecipe.Update                := TRUE;
 				gRecipeCtrl.Status.LoadInProgress := FALSE;
 				RecipeCtrl.In.Load                := FALSE;
 				RecipeCtrl.In.FileName            := EMPTY_FILENAME;

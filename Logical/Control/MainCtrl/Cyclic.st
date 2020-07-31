@@ -3,7 +3,11 @@ PROGRAM _CYCLIC
 
 	CASE gMainState OF
 		MAIN_INIT:
-			gMainState := MAIN_IDLE;			
+			gRecipeCtrl.Par.RecipeSaveIndex := gIndexOfLastLoadedTune;
+			gRecipeCtrl.Cmd.LoadRecipe := TRUE;
+			IF NOT gTuneRecipe.Update AND NOT gRecipeCtrl.Status.LoadInProgress THEN
+	  			gMainState := MAIN_IDLE;
+			END_IF;						
 		MAIN_IDLE:
 			IF gRecipeCtrl.Cmd.SaveAutotune THEN
 				gMainState := MAIN_AUTOTUNE;
@@ -17,9 +21,7 @@ PROGRAM _CYCLIC
 			ELSE
 				gMainCtrl.Status.AutotuneInProgress := TRUE;
 			END_IF
-			
-			
-				
+						
 			IF gMainCtrl.Status.AutotuneDone AND NOT gRecipeCtrl.Status.SaveInProgress THEN				
 				gRecipeCtrl.Status.CommandDone      := FALSE;
 				gMainCtrl.Status.AutotuneDone       := FALSE;

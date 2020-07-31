@@ -10,4 +10,8 @@ VAR
 	gAlarmUIConnect : MpAlarmXListUIConnectType;
 	gError : Error_type;
 	gRecipeCtrl : MainRecipeCtrl_type;
+	gTuneRecipe : TuneRecipe_type;
+END_VAR
+VAR RETAIN
+	gIndexOfLastLoadedTune : USINT := 0;
 END_VAR
