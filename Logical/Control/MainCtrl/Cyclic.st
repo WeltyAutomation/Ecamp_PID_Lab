@@ -5,7 +5,7 @@ PROGRAM _CYCLIC
 		MAIN_INIT:
 			gRecipeCtrl.Par.RecipeSaveIndex := gIndexOfLastLoadedTune;
 			gRecipeCtrl.Cmd.LoadRecipe := TRUE;
-			IF NOT gTuneRecipe.Update AND NOT gRecipeCtrl.Status.LoadInProgress THEN
+			IF EDGEPOS(gRecipeCtrl.Status.CommandDone) THEN
 	  			gMainState := MAIN_IDLE;
 			END_IF;						
 		MAIN_IDLE:
@@ -16,19 +16,17 @@ PROGRAM _CYCLIC
 		MAIN_HEAT:			
 		MAIN_AUTOTUNE:
 			IF gMainCtrl.Status.AutotuneDone THEN
-				gMainCtrl.Status.AutotuneInProgress := FALSE;
-				gRecipeCtrl.Cmd.SaveAutotune        := TRUE;
+				IF EDGEPOS(gRecipeCtrl.Status.CommandDone) THEN
+					gRecipeCtrl.Status.CommandDone      := FALSE;
+					gMainCtrl.Status.AutotuneDone       := FALSE;
+					gMainState := MAIN_IDLE;
+				ELSE
+					gMainCtrl.Status.AutotuneInProgress := FALSE;
+					gRecipeCtrl.Cmd.SaveAutotune        := TRUE;
+				END_IF
 			ELSE
-				gMainCtrl.Status.AutotuneInProgress := TRUE;
-			END_IF
-						
-			IF gMainCtrl.Status.AutotuneDone AND NOT gRecipeCtrl.Status.SaveInProgress THEN				
-				gRecipeCtrl.Status.CommandDone      := FALSE;
-				gMainCtrl.Status.AutotuneDone       := FALSE;
-				gMainState := MAIN_IDLE;
-			ELSE
-				
-			END_IF;						
+				gMainCtrl.Status.AutotuneInProgress     := TRUE;
+			END_IF					
 		MAIN_ERROR:
 	END_CASE;
 	 
