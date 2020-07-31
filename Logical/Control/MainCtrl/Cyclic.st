@@ -20,7 +20,7 @@ PROGRAM _CYCLIC
 			
 			
 				
-			IF gMainCtrl.Status.AutotuneDone AND gRecipeCtrl.Status.CommandDone THEN				
+			IF gMainCtrl.Status.AutotuneDone AND NOT gRecipeCtrl.Status.SaveInProgress THEN				
 				gRecipeCtrl.Status.CommandDone      := FALSE;
 				gMainCtrl.Status.AutotuneDone       := FALSE;
 				gMainState := MAIN_IDLE;
