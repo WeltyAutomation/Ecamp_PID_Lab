@@ -12,12 +12,20 @@ PROGRAM _CYCLIC
 		MAIN_HEAT:			
 		MAIN_AUTOTUNE:
 			IF gMainCtrl.Status.AutotuneDone THEN
-				gRecipeCtrl.Cmd.SaveAutotune := TRUE;
+				gMainCtrl.Status.AutotuneInProgress := FALSE;
+				gRecipeCtrl.Cmd.SaveAutotune        := TRUE;
+			ELSE
+				gMainCtrl.Status.AutotuneInProgress := TRUE;
+			END_IF
+			
+			
 				
-			ELSIF gMainCtrl.Status.AutotuneDone AND gRecipeCtrl.Status.CommandDone THEN				
-				gRecipeCtrl.Status.CommandDone := FALSE;
-				gMainCtrl.Status.AutotuneDone  := FALSE;
+			IF gMainCtrl.Status.AutotuneDone AND gRecipeCtrl.Status.CommandDone THEN				
+				gRecipeCtrl.Status.CommandDone      := FALSE;
+				gMainCtrl.Status.AutotuneDone       := FALSE;
 				gMainState := MAIN_IDLE;
+			ELSE
+				
 			END_IF;						
 		MAIN_ERROR:
 	END_CASE;

@@ -13,6 +13,7 @@
   <Module Name="5PP5CP_US15_02" Type="5PP5CP.US15-02" Version="2.0.6.0">
     <Connection Connector="SY" TargetModule="5PP520.1505-00" TargetConnector="SY1" />
     <Parameter ID="ConfigurationID" Value="PID_Lab_pp500" />
+    <Parameter ID="UserPartitionSize" Value="100" />
     <Parameter ID="RemMemDevice" Value="PCI.1.PP5IF3.SRAM" />
     <Parameter ID="RemMemSize" Value="100" />
     <Parameter ID="RemanentGlobalPvSize" Value="50" />
@@ -20,6 +21,15 @@
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
     <Parameter ID="TimerDevice" Value="5PP5IF.FPLM-00.IF1" />
     <Parameter ID="TaskClassIdleTime" Value="2000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="Recipes" />
+    <Parameter ID="FileDevicePath1" Value="F:\Recipes" />
+    <Group ID="FtpUser1" />
+    <Parameter ID="FtpUsername1" Value="brcpu" />
+    <Parameter ID="FtpUserPassword1" Value="rxMbsWslfkIXxy6fzmK6wAtRHG0v5cw0fRA9w62tUOs=" />
+    <Parameter ID="FtpUserSalt1" Value="VKEEH50/" />
+    <Parameter ID="FTPAccessRight1" Value="0" />
+    <Parameter ID="FTPdevice1" Value="ALL" />
   </Module>
   <Module Name="5PP5IF.FPLM-00" Type="5PP5IF.FPLM-00" Version="2.4.0.0">
     <Connection Connector="SL" TargetModule="5PP520.1505-00" TargetConnector="SL1" />

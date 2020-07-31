@@ -41,6 +41,7 @@ TYPE
 		SelectedRecipeName : STRING[255];
 		UISetup : MpRecipeUISetupType;
 		UIConnect : MpRecipeUIConnectType;
+		RecipeSaveIndex : USINT;
 	END_STRUCT;
 	RecipeCmd_type : 	STRUCT 
 		LoadRecipe : BOOL;
@@ -49,11 +50,11 @@ TYPE
 	END_STRUCT;
 	RecipeStatus_type : 	STRUCT 
 		CommandDone : BOOL;
+		SaveInProgress : BOOL;
+		LoadInProgress : BOOL;
 	END_STRUCT;
 	MainStatus_type : 	STRUCT 
 		AutotuneDone : BOOL;
-	END_STRUCT;
-	Recipe_type : 	STRUCT 
-		New_Member : USINT;
+		AutotuneInProgress : BOOL;
 	END_STRUCT;
 END_TYPE
