@@ -16,7 +16,7 @@ PROGRAM _CYCLIC
 		MAIN_HEAT:			
 		MAIN_AUTOTUNE:
 			IF gMainCtrl.Status.AutotuneDone THEN
-				IF EDGEPOS(gRecipeCtrl.Status.CommandDone) THEN
+				IF gRecipeCtrl.Status.CommandDone THEN
 					gRecipeCtrl.Status.CommandDone      := FALSE;
 					gMainCtrl.Status.AutotuneDone       := FALSE;
 					gMainState := MAIN_IDLE;
