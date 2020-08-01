@@ -13,10 +13,20 @@ TYPE
 	MainCtrl_type : 	STRUCT 
 		Cmd : MainCmd_type;
 		Status : MainStatus_type;
+		Par : MainCtrlPar_type;
 	END_STRUCT;
 	MainCmd_type : 	STRUCT 
 		HeatOn : BOOL;
 		AutotuneHeaters : BOOL;
+		ErrorReset : BOOL;
+		AutotuneMtHeater : BOOL;
+	END_STRUCT;
+	MainStatus_type : 	STRUCT 
+		AutotuneDone : BOOL;
+		AutotuneInProgress : BOOL;
+	END_STRUCT;
+	MainCtrlPar_type : 	STRUCT 
+		SingleZoneIndex : USINT;
 	END_STRUCT;
 	DIO_type : 	STRUCT 
 		ZoneTemps : ARRAY[0..3]OF INT;
@@ -52,10 +62,6 @@ TYPE
 		CommandDone : BOOL;
 		SaveInProgress : BOOL;
 		LoadInProgress : BOOL;
-	END_STRUCT;
-	MainStatus_type : 	STRUCT 
-		AutotuneDone : BOOL;
-		AutotuneInProgress : BOOL;
 	END_STRUCT;
 	TuneRecipe_type : 	STRUCT 
 		ControlTune : ARRAY[0..3]OF ControlTune_type;

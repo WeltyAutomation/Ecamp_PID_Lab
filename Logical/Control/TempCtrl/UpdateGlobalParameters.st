@@ -1,23 +1,40 @@
+(*********************************************************************************
+ * Copyright:   
+ * Author:    TylerWoodley 
+ * Created:   August 1, 2020/11:42 AM 
+ *********************************************************************************)
 
 (* Update Global Parameters from control info *)
 FUNCTION UpdateGlobalParameters
+	
+	FOR index := 0 TO 2 DO
+		TuneRecipe.ControlTune[index].PIDParameters.Heat.DerivativeTime   := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Heat.DerivativeTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Heat.FilterTime       := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Heat.FilterTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Heat.IntegrationTime  := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Heat.IntegrationTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Heat.ProportionalGain := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Heat.ProportionalGain;
 		
-	TuneValues.PIDParameters.Heat.DerivativeTime   := ControllerInfo.Tuning.PIDParameters.Heat.DerivativeTime;
-	TuneValues.PIDParameters.Heat.FilterTime       := ControllerInfo.Tuning.PIDParameters.Heat.FilterTime;
-	TuneValues.PIDParameters.Heat.IntegrationTime  := ControllerInfo.Tuning.PIDParameters.Heat.IntegrationTime;
-	TuneValues.PIDParameters.Heat.ProportionalGain := ControllerInfo.Tuning.PIDParameters.Heat.ProportionalGain;
+		TuneRecipe.ControlTune[index].PIDParameters.Cool.DerivativeTime   := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Cool.DerivativeTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Cool.FilterTime       := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Cool.FilterTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Cool.IntegrationTime  := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Cool.IntegrationTime;
+		TuneRecipe.ControlTune[index].PIDParameters.Cool.ProportionalGain := TempGroup.MpZones[index].Out.Info.Tuning.PIDParameters.Cool.ProportionalGain;
+		
+		TuneRecipe.ControlTune[index].ProfileParameters.Heat.DelayTime    := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Heat.DelayTime;
+		TuneRecipe.ControlTune[index].ProfileParameters.Heat.FilterTime   := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Heat.FilterTime;
+		TuneRecipe.ControlTune[index].ProfileParameters.Heat.SlewRate     := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Heat.SlewRate;
+				
+		TuneRecipe.ControlTune[index].ProfileParameters.Cool.DelayTime    := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Cool.DelayTime;
+		TuneRecipe.ControlTune[index].ProfileParameters.Cool.FilterTime   := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Cool.FilterTime;
+		TuneRecipe.ControlTune[index].ProfileParameters.Cool.SlewRate     := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Cool.SlewRate;
+	END_FOR;
+
+	TuneRecipe.ControlTune[3].PIDParameters.Heat.DerivativeTime           := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.DerivativeTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Heat.FilterTime               := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.FilterTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Heat.IntegrationTime          := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.IntegrationTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Heat.ProportionalGain         := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.Gain;
 	
-	TuneValues.PIDParameters.Cool.DerivativeTime   := ControllerInfo.Tuning.PIDParameters.Cool.DerivativeTime;
-	TuneValues.PIDParameters.Cool.FilterTime       := ControllerInfo.Tuning.PIDParameters.Cool.FilterTime;
-	TuneValues.PIDParameters.Cool.IntegrationTime  := ControllerInfo.Tuning.PIDParameters.Cool.IntegrationTime;
-	TuneValues.PIDParameters.Cool.ProportionalGain := ControllerInfo.Tuning.PIDParameters.Cool.ProportionalGain;
-	
-	TuneValues.ProfileParameters.Heat.DelayTime    := ControllerInfo.Tuning.ProfileParameters.Heat.DelayTime;
-	TuneValues.ProfileParameters.Heat.FilterTime   := ControllerInfo.Tuning.ProfileParameters.Heat.FilterTime;
-	TuneValues.ProfileParameters.Heat.SlewRate     := ControllerInfo.Tuning.ProfileParameters.Heat.SlewRate;
-	
-	TuneValues.ProfileParameters.Cool.DelayTime    := ControllerInfo.Tuning.ProfileParameters.Cool.DelayTime;
-	TuneValues.ProfileParameters.Cool.FilterTime   := ControllerInfo.Tuning.ProfileParameters.Cool.FilterTime;
-	TuneValues.ProfileParameters.Cool.SlewRate     := ControllerInfo.Tuning.ProfileParameters.Cool.SlewRate;
+	TuneRecipe.ControlTune[3].PIDParameters.Cool.DerivativeTime           := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.DerivativeTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Cool.FilterTime               := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.FilterTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Cool.IntegrationTime          := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.IntegrationTime;
+	TuneRecipe.ControlTune[3].PIDParameters.Cool.ProportionalGain         := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.Gain;
 	
 END_FUNCTION
