@@ -1,23 +1,24 @@
-VAR
-	gAmbientTemperature : REAL := 28;
-	gMainState : MainState_enum := MAIN_INIT;
-END_VAR
 VAR CONSTANT
 	TARGET_TEMP : USINT := 80;
 END_VAR
 VAR
+	gAmbientTemperature : REAL := 28;
+	gRecipeCtrl : MainRecipeCtrl_type;
+	gMainState : MainState_enum := MAIN_INIT;
 	gMainCtrl : MainCtrl_type;
+END_VAR
+VAR RETAIN
+	gIndexOfLastLoadedTune : USINT := 0;
+END_VAR
+VAR
+	gError : Error_type;
 	gDio : DIO_type;
 	gAlarmUIConnect : MpAlarmXListUIConnectType;
-	gError : Error_type;
-	gRecipeCtrl : MainRecipeCtrl_type;
 END_VAR
 VAR CONSTANT
 	COOLDOWN_TEMP : USINT := 50;
 END_VAR
 VAR
 	gTuneRecipe : TuneRecipe_type;
-END_VAR
-VAR RETAIN
-	gIndexOfLastLoadedTune : USINT := 0;
+	gTempInterface : TempInterface_type;
 END_VAR
