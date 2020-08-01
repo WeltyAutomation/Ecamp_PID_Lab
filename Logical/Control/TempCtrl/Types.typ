@@ -45,6 +45,7 @@ TYPE
 		TEMP_INIT,
 		TEMP_IDLE,
 		TEMP_ON,
+		TEMP_ON_MTZONE,
 		TEMP_AUTOTUNE,
 		TEMP_AUTOTUNE_MTZONE,
 		TEMP_ERROR
@@ -73,6 +74,7 @@ TYPE
 		FeedForwardHeat : REAL;
 		FeedForwardCool : REAL;
 		ControlStatusIn : DINT;
+		Enable : BOOL;
 	END_STRUCT;
 	MtZoneControllerOutput_type : 	STRUCT 
 		Active : BOOL;

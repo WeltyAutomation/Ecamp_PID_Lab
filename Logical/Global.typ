@@ -19,6 +19,7 @@ TYPE
 		HeatOn : BOOL;
 		AutotuneHeaters : BOOL;
 		ErrorReset : BOOL;
+		AutotuneMtHeater : BOOL;
 	END_STRUCT;
 	MainStatus_type : 	STRUCT 
 		AutotuneDone : BOOL;

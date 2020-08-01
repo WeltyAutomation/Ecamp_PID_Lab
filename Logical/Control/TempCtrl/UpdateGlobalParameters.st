@@ -1,3 +1,8 @@
+(*********************************************************************************
+ * Copyright:   
+ * Author:    TylerWoodley 
+ * Created:   August 1, 2020/11:42 AM 
+ *********************************************************************************)
 
 (* Update Global Parameters from control info *)
 FUNCTION UpdateGlobalParameters
