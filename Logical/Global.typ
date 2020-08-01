@@ -94,8 +94,8 @@ TYPE
 	TempInterface_type : 	STRUCT 
 		Trends : ARRAY[0..3]OF TempInterfaceTrends_type;
 		Status : ARRAY[0..3]OF TempInterfaceStatus_type;
-		Parameters : ARRAY[0..3]OF TempInterfaceParameters_type;
-		Commands : TempInterfaceCommands_type;
+		PID : ARRAY[0..3]OF PIDParameterContainer_type;
+		Enables : ARRAY[0..3]OF BOOL := [4(TRUE)];
 	END_STRUCT;
 	TempInterfaceTrends_type : 	STRUCT 
 		ActualTemp : REAL;
@@ -106,17 +106,5 @@ TYPE
 		HeatOn : BOOL;
 		FanOn : BOOL;
 		ControlActive : BOOL;
-	END_STRUCT;
-	TempInterfaceParameters_type : 	STRUCT 
-		SetPoints : REAL;
-		ProportionalGain : REAL;
-		IntegralTime : REAL;
-		DerivativeTime : REAL;
-		Enable : BOOL;
-	END_STRUCT;
-	TempInterfaceCommands_type : 	STRUCT 
-		StartTuning : BOOL;
-		StopTuning : BOOL;
-		HeatOn : BOOL;
 	END_STRUCT;
 END_TYPE
