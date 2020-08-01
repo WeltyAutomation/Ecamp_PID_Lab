@@ -11,6 +11,11 @@ VAR
 	gAlarmUIConnect : MpAlarmXListUIConnectType;
 	gError : Error_type;
 	gRecipeCtrl : MainRecipeCtrl_type;
+END_VAR
+VAR CONSTANT
+	COOLDOWN_TEMP : USINT := 50;
+END_VAR
+VAR
 	gTuneRecipe : TuneRecipe_type;
 END_VAR
 VAR RETAIN

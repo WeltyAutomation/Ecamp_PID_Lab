@@ -30,13 +30,13 @@ TYPE
 		Tune : BOOL;
 	END_STRUCT;
 	TempZoneOutput_type : 	STRUCT 
-		Active : USINT;
-		Error : USINT;
+		Active : BOOL;
+		Error : BOOL;
 		StatusID : DINT;
-		UpdateDone : USINT;
+		UpdateDone : BOOL;
 		Heat : BOOL;
 		Cool : BOOL;
-		ControlActive : USINT;
+		ControlActive : BOOL;
 		Info : MpTempControllerInfoType;
 		TuningDone : BOOL;
 	END_STRUCT;
@@ -46,6 +46,7 @@ TYPE
 		TEMP_IDLE,
 		TEMP_ON,
 		TEMP_AUTOTUNE,
+		TEMP_AUTOTUNE_MTZONE,
 		TEMP_ERROR
 		);
 	MtZone_Type : 	STRUCT 
@@ -53,6 +54,10 @@ TYPE
 		Controller : MtZoneController_type;
 		Tuning : MtZoneTuning_type;
 		Cmd : MtZoneCmd_type;
+		Status : MtZoneStatus_type;
+	END_STRUCT;
+	MtZoneStatus_type : 	STRUCT 
+		CurrentTemp : REAL;
 	END_STRUCT;
 	MtZoneController_type : 	STRUCT 
 		In : MtZoneControllerInput_type;
@@ -102,7 +107,7 @@ TYPE
 		SetTemperature : REAL;
 		FeedForwardHeat : REAL;
 		FeedForwardCool : REAL;
-		State : MTTempProfileModeEnum;
+		State : MTTempProfileStateEnum;
 		InSetPoint : BOOL;
 		InitDone : BOOL;
 	END_STRUCT;
@@ -111,14 +116,14 @@ TYPE
 		Out : MtZoneTuningOutput_type;
 	END_STRUCT;
 	MtZoneTuningInput_type : 	STRUCT 
-		AmbientTemperature : USINT;
+		AmbientTemperature : REAL;
 		ActTemperature : REAL;
 		HeatIn : REAL;
 		CoolIn : REAL;
-		Mode : MTTTempTuningModeEnum;
+		Mode : MTTempTuningModeEnum;
 		SetPointTemperature : REAL;
 		CoolDownTemperature : REAL;
-		StartZingleZone : BOOL;
+		StartSingleZone : BOOL;
 		Abort : BOOL;
 	END_STRUCT;
 	MtZoneTuningOutput_type : 	STRUCT 
@@ -130,7 +135,7 @@ TYPE
 		FeedForwardCool : REAL;
 		TuningActive : BOOL;
 		TuningDone : BOOL;
-		State : MtTempTuningStateEnum;
+		State : MTTempTuningStateEnum;
 		PIDParameters : MTTempControllerType;
 		PIDParametersValid : BOOL;
 		ControlStatusOut : DINT;

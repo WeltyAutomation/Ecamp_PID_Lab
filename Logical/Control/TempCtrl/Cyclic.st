@@ -5,9 +5,9 @@
  *********************************************************************************)
 
 PROGRAM _CYCLIC
-	TempControllerFBs[0].MpLink := ADR(gTempController_1);
-	TempControllerFBs[1].MpLink := ADR(gTempController_2);
-	TempControllerFBs[2].MpLink := ADR(gTempController_3);
+	TempControllerFBs[ZONE_1_INDEX].MpLink := ADR(gTempController_1);
+	TempControllerFBs[ZONE_2_INDEX].MpLink := ADR(gTempController_2);
+	TempControllerFBs[ZONE_3_INDEX].MpLink := ADR(gTempController_3);
 	
 	TempGroup.Cmd.ErrorReset    := gMainCtrl.Cmd.ErrorReset;
 	
@@ -55,6 +55,8 @@ PROGRAM _CYCLIC
 	IF TempGroup.MtZone.Profile.Out.Error THEN 
 		TempState := TEMP_ERROR;
 	END_IF
+	
+	TempGroup.MtZone.Status.CurrentTemp          := gDio.ZoneTemps[ZONE_4_INDEX] / 10;
 	
 	MtTempProfileFB.Enable                       := TRUE;
 	MtTempProfileFB.AmbientTemperature           := gAmbientTemperature;
@@ -166,19 +168,31 @@ PROGRAM _CYCLIC
 				END_FOR;
 				TempStatus.TuningInProgress          := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
 														     TempGroup.MpZones[1].Out.TuningDone AND
-															 TempGroup.MpZones[2].Out.TuningDone);
-				
+															 TempGroup.MpZones[2].Out.TuningDone);				
 			ELSE
 				FOR index := 0 TO 2 DO
 					TempGroup.MpZones[index].In.Tune := FALSE;
 					gDio.HeatOn[index]               := FALSE;
-					gDio.ZoneFans[index]             := FALSE;
-					UpdateGlobalParameters(ADR(gTuneRecipe.ControlTune[index]), TempGroup.MpZones[index].Out.Info);
+					gDio.ZoneFans[index]             := FALSE;					
 				END_FOR;
+				UpdateGlobalParameters(ADR(gTuneRecipe), TempGroup);
 				gMainCtrl.Status.AutotuneDone        := TRUE;
 				TempState                            := TEMP_IDLE;
 			END_IF;
-
+			
+		TEMP_AUTOTUNE_MTZONE:
+			IF NOT EDGEPOS(TempGroup.MtZone.Tuning.Out.TuningDone) THEN
+				TempGroup.MtZone.Tuning.In.StartSingleZone     := TRUE;
+				TempGroup.MtZone.Tuning.In.SetPointTemperature := TARGET_TEMP;
+				TempGroup.MtZone.Tuning.In.CoolDownTemperature := COOLDOWN_TEMP;
+				TempGroup.MtZone.Tuning.In.HeatIn              := TempGroup.MtZone.Controller.Out.HeatOut;
+				TempGroup.MtZone.Tuning.In.CoolIn              := TempGroup.MtZone.Controller.Out.CoolOut;
+			ELSE
+				UpdateGlobalParameters(ADR(gTuneRecipe), TempGroup);
+				TempGroup.MtZone.Tuning.In.StartSingleZone     := FALSE;
+				gMainCtrl.Status.AutotuneDone                  := TRUE;
+				TempState                                      := TEMP_IDLE;
+			END_IF
 			
 		TEMP_ERROR:
 			FOR index := 0 TO 2 DO
@@ -195,9 +209,9 @@ PROGRAM _CYCLIC
 			END_IF;
 	END_CASE;
 
-	TempControllerFBs[0]();
-	TempControllerFBs[1]();
-	TempControllerFBs[2]();
+	TempControllerFBs[ZONE_1_INDEX]();
+	TempControllerFBs[ZONE_2_INDEX]();
+	TempControllerFBs[ZONE_3_INDEX]();
 	MtTempControllerFB();
 	MtTempProfileFB();
 	MtTempTuningFB();

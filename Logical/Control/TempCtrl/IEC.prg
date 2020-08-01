@@ -8,5 +8,6 @@
     <File Private="true">LocalFunctions.fun</File>
     <File>UpdateControlParameters.st</File>
     <File>UpdateGlobalParameters.st</File>
+    <File>UpdateMtControlParameters.st</File>
   </Files>
 </Program>
