@@ -8,6 +8,7 @@ TYPE
 		SetTemp : ARRAY[0..3]OF REAL;
 		CoolOn : ARRAY[0..3]OF BOOL;
 		HeatOn : ARRAY[0..3]OF BOOL;
+		Error : BOOL;
 	END_STRUCT;
 	TempGroupCmd_type : 	STRUCT 
 		ErrorReset : BOOL;
@@ -42,13 +43,14 @@ TYPE
 	END_STRUCT;
 	TempCtrlState_enum : 
 		(
-		TEMP_INIT,
-		TEMP_IDLE,
-		TEMP_ON,
-		TEMP_ON_MTZONE,
-		TEMP_AUTOTUNE,
-		TEMP_AUTOTUNE_MTZONE,
-		TEMP_ERROR
+		TEMP_INIT := 0,
+		TEMP_IDLE := 10,
+		TEMP_ON := 20,
+		TEMP_ON_MTZONE := 30,
+		TEMP_AUTOTUNE := 40,
+		TEMP_AUTOTUNE_ABORT := 41,
+		TEMP_AUTOTUNE_MTZONE := 50,
+		TEMP_ERROR := 60
 		);
 	MtZone_Type : 	STRUCT 
 		Profile : MtZoneProfile_type;

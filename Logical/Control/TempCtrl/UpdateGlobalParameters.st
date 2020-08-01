@@ -26,7 +26,7 @@ FUNCTION UpdateGlobalParameters
 		TuneRecipe.ControlTune[index].ProfileParameters.Cool.FilterTime   := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Cool.FilterTime;
 		TuneRecipe.ControlTune[index].ProfileParameters.Cool.SlewRate     := TempGroup.MpZones[index].Out.Info.Tuning.ProfileParameters.Cool.SlewRate;
 	END_FOR;
-
+	(*
 	TuneRecipe.ControlTune[3].PIDParameters.Heat.DerivativeTime           := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.DerivativeTime;
 	TuneRecipe.ControlTune[3].PIDParameters.Heat.FilterTime               := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.FilterTime;
 	TuneRecipe.ControlTune[3].PIDParameters.Heat.IntegrationTime          := TempGroup.MtZone.Tuning.Out.PIDParameters.Heating.IntegrationTime;
@@ -36,5 +36,5 @@ FUNCTION UpdateGlobalParameters
 	TuneRecipe.ControlTune[3].PIDParameters.Cool.FilterTime               := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.FilterTime;
 	TuneRecipe.ControlTune[3].PIDParameters.Cool.IntegrationTime          := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.IntegrationTime;
 	TuneRecipe.ControlTune[3].PIDParameters.Cool.ProportionalGain         := TempGroup.MtZone.Tuning.Out.PIDParameters.Cooling.Gain;
-	
+	*)
 END_FUNCTION
