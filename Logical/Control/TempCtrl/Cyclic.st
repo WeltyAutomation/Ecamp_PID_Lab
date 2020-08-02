@@ -30,7 +30,6 @@ PROGRAM _CYCLIC
 		IF gTuneRecipe.Update THEN
 			TempGroup.MpZones[index].In.Update := TRUE;
 			UpdateControlParameters(gTuneRecipe.ControlTune[index], ADR(TempGroup.MpZones[index].In.Parameters));
-			gTuneRecipe.Update := FALSE;
 		END_IF;
 	  
 		TempStatus.CurrentTemp[index]                   := gDio.ZoneTemps[index] / 10;
@@ -68,6 +67,10 @@ PROGRAM _CYCLIC
 		gTempInterface.Trends[index].ActualTemp         := TempStatus.CurrentTemp[index];
 		gTempInterface.Trends[index].SetTemp            := TempStatus.SetTemp[index];
 	END_FOR;
+	
+	IF gTuneRecipe.Update AND TempGroup.MpZones[ZONE_1_INDEX].Out.UpdateDone AND TempGroup.MpZones[ZONE_2_INDEX].Out.UpdateDone AND TempGroup.MpZones[ZONE_3_INDEX].Out.UpdateDone THEN
+	  gTuneRecipe.Update := FALSE;
+	END_IF;
 	
 	CASE TempState OF
 		TEMP_INIT:

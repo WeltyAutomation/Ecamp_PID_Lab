@@ -13,7 +13,7 @@ PROGRAM _CYCLIC
 	RecipeXmlFB.MpLink          := ADR(gRecipeXml);
 	RecipeXmlFB.Enable          := TRUE;
 	RecipeXmlFB.ErrorReset      := RecipeCtrl.In.ErrorReset;
-	RecipeXmlFB.DeviceName      := ADR('Recipes');
+	RecipeXmlFB.DeviceName      := ADR(DEVICE_NAME);
 	RecipeXmlFB.FileName        := ADR(RecipeCtrl.In.FileName);
 	RecipeXmlFB.Load            := RecipeCtrl.In.Load;
 	RecipeXmlFB.Save            := RecipeCtrl.In.Save;
@@ -41,7 +41,7 @@ PROGRAM _CYCLIC
 	RecipeCtrl.Par.Out.Info     := RecipeParFB.Info;
 	
 
-	IF RecipeCtrl.Out.Error THEN
+	IF RecipeCtrl.Out.Error OR RecipeCtrl.Par.Out.Error THEN
 		RecipeState := RECIPE_ERROR;
 	END_IF;
 	
@@ -49,7 +49,7 @@ PROGRAM _CYCLIC
 		RECIPE_INIT:
 			RecipeState := RECIPE_IDLE;	
 			
-		RECIPE_IDLE:			
+		RECIPE_IDLE:
 			IF gRecipeCtrl.Cmd.SaveRecipe THEN
 				gRecipeCtrl.Cmd.SaveRecipe       := FALSE;
 				RecipeState                      := RECIPE_SAVE;
@@ -62,8 +62,9 @@ PROGRAM _CYCLIC
 				RecipeState                      := RECIPE_LOAD;
 			END_IF;
 			
-		RECIPE_SAVE:
-			IF NOT EDGEPOS(RecipeCtrl.Out.CommandDone) THEN
+		RECIPE_SAVE:			
+			IF NOT EDGEPOS(RecipeCtrl.Out.CommandDone) THEN				
+				gRecipeIO                         := gTuneRecipe;
 				gRecipeCtrl.Status.CommandDone    := FALSE;
 				gRecipeCtrl.Status.SaveInProgress := TRUE;
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
@@ -76,15 +77,16 @@ PROGRAM _CYCLIC
 				RecipeState                       := RECIPE_IDLE;
 			END_IF;
 			
-		RECIPE_LOAD:
+		RECIPE_LOAD:			
 			IF NOT EDGEPOS(RecipeCtrl.Out.CommandDone) THEN
 				gRecipeCtrl.Status.CommandDone    := FALSE;
 				gRecipeCtrl.Status.LoadInProgress := TRUE;
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Load                := TRUE;
 			ELSE
+				gTuneRecipe                       := gRecipeIO;
 				FOR index := 0 TO 2 DO
-					gTempInterface.PID[index] := gTuneRecipe.ControlTune[index].PIDParameters;
+					gTempInterface.PID[index]     := gTuneRecipe.ControlTune[index].PIDParameters;
 				END_FOR;
 				gRecipeCtrl.Status.CommandDone    := TRUE;
 				gIndexOfLastLoadedTune            := gRecipeCtrl.Par.RecipeSaveIndex;

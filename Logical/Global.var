@@ -1,5 +1,6 @@
 VAR CONSTANT
 	TARGET_TEMP : USINT := 80;
+	COOLDOWN_TEMP : USINT := 50;
 END_VAR
 VAR
 	gAmbientTemperature : REAL := 28;
@@ -14,11 +15,7 @@ VAR
 	gError : Error_type;
 	gDio : DIO_type;
 	gAlarmUIConnect : MpAlarmXListUIConnectType;
-END_VAR
-VAR CONSTANT
-	COOLDOWN_TEMP : USINT := 50;
-END_VAR
-VAR
-	gTuneRecipe : TuneRecipe_type;
 	gTempInterface : TempInterface_type;
+	gTuneRecipe : TuneRecipe_type;
+	gRecipeIO : TuneRecipe_type;
 END_VAR
