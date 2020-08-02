@@ -86,13 +86,10 @@ PROGRAM _CYCLIC
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Load                := TRUE;
 			ELSE
-				gTuneRecipe                       := gRecipeIO;
-				FOR index := 0 TO 2 DO
-					gTempInterface.PID[index]     := gTuneRecipe.ControlTune[index].PIDParameters;
-				END_FOR;
+				gTempInterface.Recipe             := gRecipeIO;
+				gTempInterface.Recipe.Update             := TRUE;
 				gRecipeCtrl.Status.CommandDone    := TRUE;
 				gIndexOfLastLoadedTune            := gRecipeCtrl.Par.RecipeSaveIndex;
-				gTuneRecipe.Update                := TRUE;
 				gRecipeCtrl.Status.LoadInProgress := FALSE;
 				RecipeCtrl.In.Load                := FALSE;
 				RecipeCtrl.In.FileName            := EMPTY_FILENAME;

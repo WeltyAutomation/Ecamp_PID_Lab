@@ -126,7 +126,7 @@ PROGRAM _CYCLIC
 						gDio.HeatOn[index]               := FALSE;
 						gDio.ZoneFans[index]             := FALSE;					
 					END_FOR;
-					UpdateGlobalParameters(ADR(gTuneRecipe), TempGroup);
+					UpdateGlobalParameters(ADR(gTempInterface.Recipe), TempGroup);
 					gMainCtrl.Status.AutotuneDone        := TRUE;
 					TempState                            := TEMP_IDLE;
 				END_IF;

@@ -13,10 +13,19 @@ PROGRAM _CYCLIC
 	Vis.States := gStateInfo;	
 	
 	IF (Page = PAGE_START) THEN
+		
 		IF EDGEPOS(gMainState = MAIN_IDLE) THEN
 			ChangePage := PAGE_MAIN;
 		END_IF;	
 	ELSE
+		
 	END_IF;
-
+	
+	IF EDGENEG(gRecipeCtrl.Status.LoadInProgress) THEN
+		Vis.Temp.Recipe := gTuneRecipe;
+	ELSE
+		gTempInterface.Recipe := Vis.Temp.Recipe;
+	END_IF
+	
+	
 END_PROGRAM

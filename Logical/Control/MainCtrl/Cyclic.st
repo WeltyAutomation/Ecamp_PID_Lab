@@ -8,11 +8,7 @@ PROGRAM _CYCLIC
 	
 	gStateInfo.Main := gMainState;
 	
-	IF NOT(gMainState = MAIN_INIT) THEN
-		FOR index := 0 TO 2 DO
-			 gTuneRecipe.ControlTune[index].PIDParameters := gTempInterface.PID[index];
-		END_FOR;
-	END_IF;
+	gTuneRecipe     := gTempInterface.Recipe;
 
 	CASE gMainState OF
 		MAIN_INIT:
