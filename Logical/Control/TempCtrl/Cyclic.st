@@ -12,8 +12,8 @@ PROGRAM _CYCLIC
 	TempGroup.Cmd.ErrorReset               := gMainCtrl.Cmd.ErrorReset;
 	
 	TempStatus.Error                       := TempGroup.MpZones[ZONE_1_INDEX].Out.Error OR
-	TempGroup.MpZones[ZONE_2_INDEX].Out.Error OR
-	TempGroup.MpZones[ZONE_3_INDEX].Out.Error;
+	                                          TempGroup.MpZones[ZONE_2_INDEX].Out.Error OR
+	                                          TempGroup.MpZones[ZONE_3_INDEX].Out.Error;
 	
 	IF TempStatus.Error THEN 
 		IF TempStatus.TuningInProgress THEN 
@@ -78,9 +78,6 @@ PROGRAM _CYCLIC
 			ELSIF gMainCtrl.Cmd.AutotuneHeaters THEN				
 				TempStatus.TuningInProgress         := TRUE;
 				TempState                           := TEMP_AUTOTUNE;
-			ELSIF gMainCtrl.Cmd.AutotuneMtHeater THEN
-				TempStatus.TuningInProgress         := TRUE;
-				TempState                           := TEMP_AUTOTUNE_MTZONE;
 			END_IF
 			
 		TEMP_ON:
@@ -115,8 +112,8 @@ PROGRAM _CYCLIC
 						gDio.ZoneFans[index]             := TempGroup.MpZones[index].Out.Cool;
 					END_FOR;
 					TempStatus.TuningInProgress          := NOT (TempGroup.MpZones[0].Out.TuningDone AND 
-					TempGroup.MpZones[1].Out.TuningDone AND
-					TempGroup.MpZones[2].Out.TuningDone);				
+					                                             TempGroup.MpZones[1].Out.TuningDone AND
+					                                             TempGroup.MpZones[2].Out.TuningDone);				
 				ELSE
 					FOR index := 0 TO 2 DO
 						TempGroup.MpZones[index].In.Tune := FALSE;

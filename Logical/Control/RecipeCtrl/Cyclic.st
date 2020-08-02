@@ -49,7 +49,7 @@ PROGRAM _CYCLIC
 		RECIPE_INIT:
 			RecipeState := RECIPE_IDLE;	
 			
-		RECIPE_IDLE:
+		RECIPE_IDLE:			
 			IF gRecipeCtrl.Cmd.SaveRecipe THEN
 				gRecipeCtrl.Cmd.SaveRecipe       := FALSE;
 				RecipeState                      := RECIPE_SAVE;
@@ -83,6 +83,9 @@ PROGRAM _CYCLIC
 				RecipeCtrl.In.FileName            := gRecipeCtrl.Par.SelectedRecipeName;
 				RecipeCtrl.In.Load                := TRUE;
 			ELSE
+				FOR index := 0 TO 2 DO
+					gTempInterface.PID[index] := gTuneRecipe.ControlTune[index].PIDParameters;
+				END_FOR;
 				gRecipeCtrl.Status.CommandDone    := TRUE;
 				gIndexOfLastLoadedTune            := gRecipeCtrl.Par.RecipeSaveIndex;
 				gTuneRecipe.Update                := TRUE;

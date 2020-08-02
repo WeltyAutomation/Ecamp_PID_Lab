@@ -15,4 +15,5 @@ VAR
 	RecipeXmlFB : MpRecipeXml;
 	RecipeState : RecipeCtrlState_enum := RECIPE_INIT;
 	RecipeNames : ARRAY[0..12] OF STRING[255] := ['Autotune.xml','Tune_01.xml','Tune_02.xml','Tune_03.xml','Tune_04.xml','Tune_05.xml','Tune_06.xml','Tune_07.xml','Tune_08.xml','Tune_09.xml','Tune_10.xml','Tune_11.xml','Tune_12.xml'];
+	index : INT;
 END_VAR
