@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.7.3.93 SP"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Labels">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="3"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="95734" Value="Initializing..."/>
+    <Text ID="95758" Value="Zone 1"/>
+    <Text ID="95759" Value="Zone 2"/>
+    <Text ID="95760" Value="Zone 3"/>
+    <Text ID="95761" Value="Zone 4"/>
+    <Text ID="95762" Value="HEAT"/>
+    <Text ID="95763" Value="COOL"/>
+    <Text ID="95764" Value="Temp"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="95734" Value=""/>
+    <Text ID="95758" Value=""/>
+    <Text ID="95759" Value=""/>
+    <Text ID="95760" Value=""/>
+    <Text ID="95761" Value=""/>
+    <Text ID="95762" Value=""/>
+    <Text ID="95763" Value=""/>
+    <Text ID="95764" Value=""/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="95734" Value="0"/>
+    <Index ID="95758" Value="1"/>
+    <Index ID="95759" Value="2"/>
+    <Index ID="95760" Value="3"/>
+    <Index ID="95761" Value="4"/>
+    <Index ID="95762" Value="5"/>
+    <Index ID="95763" Value="6"/>
+    <Index ID="95764" Value="7"/>
+  </IndexMap>
+</TextGroup>

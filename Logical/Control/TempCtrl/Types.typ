@@ -8,6 +8,7 @@ TYPE
 		SetTemp : ARRAY[0..3]OF REAL;
 		CoolOn : ARRAY[0..3]OF BOOL;
 		HeatOn : ARRAY[0..3]OF BOOL;
+		Error : BOOL;
 	END_STRUCT;
 	TempGroupCmd_type : 	STRUCT 
 		ErrorReset : BOOL;
@@ -40,16 +41,6 @@ TYPE
 		Info : MpTempControllerInfoType;
 		TuningDone : BOOL;
 	END_STRUCT;
-	TempCtrlState_enum : 
-		(
-		TEMP_INIT,
-		TEMP_IDLE,
-		TEMP_ON,
-		TEMP_ON_MTZONE,
-		TEMP_AUTOTUNE,
-		TEMP_AUTOTUNE_MTZONE,
-		TEMP_ERROR
-		);
 	MtZone_Type : 	STRUCT 
 		Profile : MtZoneProfile_type;
 		Controller : MtZoneController_type;

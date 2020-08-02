@@ -5,11 +5,18 @@
  *********************************************************************************)
 
 PROGRAM _CYCLIC
+	FOR index := 0 TO 2 DO
+		Vis.Temp.Trends[index] := gTempInterface.Trends[index];
+		Vis.Temp.Status[index] := gTempInterface.Status[index];
+	END_FOR;
 	
-	//Page := ChangePage;
+	Vis.States := gStateInfo;	
 	
-	IF Page = PAGE_START AND gMainState = MAIN_IDLE THEN 
-		ChangePage := PAGE_MAIN;
-	END_IF	
-	 
+	IF (Page = PAGE_START) THEN
+		IF EDGEPOS(gMainState = MAIN_IDLE) THEN
+			ChangePage := PAGE_MAIN;
+		END_IF;	
+	ELSE
+	END_IF;
+
 END_PROGRAM

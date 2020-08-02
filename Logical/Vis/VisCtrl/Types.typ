@@ -1,10 +1,12 @@
 
 TYPE
-	VisAlarms_type : 	STRUCT 
-		AlarmListConnect : MpAlarmXListUIConnectType;
-	END_STRUCT;
 	Vis_type : 	STRUCT 
 		Alarms : VisAlarms_type;
+		Temp : TempInterface_type;
+		States : StateReporter_type;
+	END_STRUCT;
+	VisAlarms_type : 	STRUCT 
+		AlarmListConnect : MpAlarmXListUIConnectType;
 	END_STRUCT;
 	Page_enum : 
 		(

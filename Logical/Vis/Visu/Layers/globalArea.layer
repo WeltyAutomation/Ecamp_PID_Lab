@@ -211,16 +211,16 @@
       <Property Name="FillStyle" Value="Opaque"/>
       <Property Name="Font" Value="Source[local].Font[Status]"/>
       <Property Name="Height" Value="25"/>
-      <Property Name="IndexDatapoint" Value="None"/>
+      <Property Name="IndexDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.States.Main]"/>
       <Property Name="Left" Value="157"/>
       <Property Name="SimulationIndex" Value="0"/>
       <Property Name="SimulationValue" Value="0"/>
       <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-      <Property Name="TextGroup" Value="Source[local].TextGroup[InstantMessages]"/>
+      <Property Name="TextGroup" Value="Source[local].TextGroup[MainStatus]"/>
       <Property Name="TextIndexOffset" Value="0"/>
       <Property Name="TextSource" Value="MultipleTexts"/>
       <Property Name="Top" Value="743"/>
-      <Property Name="Width" Value="734"/>
+      <Property Name="Width" Value="187"/>
     </Control>
     <Control ClassId="0x0000100A" Name="dtTime">
       <Property Name="AlignmentHorizontal" Value="Center"/>
@@ -252,6 +252,46 @@
       <Property Name="Top" Value="49"/>
       <Property Name="ValueDatapoint" Value="None"/>
       <Property Name="Width" Value="81"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txtStatus1">
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="BackColor" Value="15"/>
+      <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Opaque"/>
+      <Property Name="Font" Value="Source[local].Font[Status]"/>
+      <Property Name="Height" Value="25"/>
+      <Property Name="IndexDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.States.Temp]"/>
+      <Property Name="Left" Value="430"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value="0"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+      <Property Name="TextGroup" Value="Source[local].TextGroup[TempState]"/>
+      <Property Name="TextIndexOffset" Value="0"/>
+      <Property Name="TextSource" Value="MultipleTexts"/>
+      <Property Name="Top" Value="743"/>
+      <Property Name="Width" Value="187"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txtStatus2">
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="BackColor" Value="15"/>
+      <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Opaque"/>
+      <Property Name="Font" Value="Source[local].Font[Status]"/>
+      <Property Name="Height" Value="25"/>
+      <Property Name="IndexDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.States.Recipe]"/>
+      <Property Name="Left" Value="703"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value="0"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+      <Property Name="TextGroup" Value="Source[local].TextGroup[RecipeState]"/>
+      <Property Name="TextIndexOffset" Value="0"/>
+      <Property Name="TextSource" Value="MultipleTexts"/>
+      <Property Name="Top" Value="743"/>
+      <Property Name="Width" Value="187"/>
     </Control>
   </Controls>
   <KeyMapping>

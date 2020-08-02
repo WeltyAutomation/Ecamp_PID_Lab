@@ -1,5 +1,5 @@
 VAR
-	TempGroup : TempGroup_type := (MtZone:=(Tuning:=(In:=(Mode:=mtTMP_HEAT_TUNING))));
+	TempGroup : TempGroup_type;
 	index : USINT;
 	TempControllerFBs : ARRAY[0..2] OF MpTempController;
 	TempState : TempCtrlState_enum;
@@ -7,6 +7,8 @@ VAR
 	MtTempControllerFB : MTTempController;
 	MtTempProfileFB : MTTempProfile;
 	MtTempTuningFB : MTTempTuning;
+END_VAR
+VAR CONSTANT
 	ZONE_1_INDEX : USINT := 0;
 	ZONE_2_INDEX : USINT := 1;
 	ZONE_3_INDEX : USINT := 2;

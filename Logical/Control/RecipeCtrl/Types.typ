@@ -1,15 +1,5 @@
 
 TYPE
-	RecipeCtrlState_enum : 
-		(
-		RECIPE_INIT,
-		RECIPE_IDLE,
-		RECIPE_SAVE,
-		RECIPE_SAVE_AUTOTUNE,
-		RECIPE_LOAD,
-		RECIPE_DELETE,
-		RECIPE_ERROR
-		);
 	RecipeCtrl_type : 	STRUCT 
 		In : RecipeCtrlInput_type;
 		Out : RecipeCtrlOutput_type;

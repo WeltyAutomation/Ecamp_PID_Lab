@@ -2,13 +2,32 @@
 TYPE
 	MainState_enum : 
 		(
-		MAIN_INIT,
-		MAIN_IDLE,
-		MAIN_HEAT,
-		MAIN_AUTOTUNE,
-		MAIN_SAVERECIPE,
-		MAIN_LOADRECIPE,
-		MAIN_ERROR
+		MAIN_INIT := 0,
+		MAIN_IDLE := 1,
+		MAIN_HEAT := 2,
+		MAIN_AUTOTUNE := 3,
+		MAIN_ERROR := 4
+		);
+	RecipeCtrlState_enum : 
+		(
+		RECIPE_INIT := 0,
+		RECIPE_IDLE := 1,
+		RECIPE_SAVE := 2,
+		RECIPE_SAVE_AUTOTUNE := 3,
+		RECIPE_LOAD := 4,
+		RECIPE_DELETE := 5,
+		RECIPE_ERROR := 6
+		);
+	TempCtrlState_enum : 
+		(
+		TEMP_INIT := 0,
+		TEMP_IDLE := 10,
+		TEMP_ON := 20,
+		TEMP_ON_MTZONE := 30,
+		TEMP_AUTOTUNE := 40,
+		TEMP_AUTOTUNE_ABORT := 41,
+		TEMP_AUTOTUNE_MTZONE := 50,
+		TEMP_ERROR := 60
 		);
 	MainCtrl_type : 	STRUCT 
 		Cmd : MainCmd_type;
@@ -20,6 +39,7 @@ TYPE
 		AutotuneHeaters : BOOL;
 		ErrorReset : BOOL;
 		AutotuneMtHeater : BOOL;
+		AbortTune : BOOL;
 	END_STRUCT;
 	MainStatus_type : 	STRUCT 
 		AutotuneDone : BOOL;
@@ -89,5 +109,26 @@ TYPE
 		SlewRate : REAL;
 		FilterTime : REAL;
 		DelayTime : REAL;
+	END_STRUCT;
+	TempInterface_type : 	STRUCT 
+		Trends : ARRAY[0..3]OF TempInterfaceTrends_type;
+		Status : ARRAY[0..3]OF TempInterfaceStatus_type;
+		PID : ARRAY[0..3]OF PIDParameterContainer_type;
+		Enables : ARRAY[0..3]OF BOOL := [4(TRUE)];
+	END_STRUCT;
+	TempInterfaceTrends_type : 	STRUCT 
+		ActualTemp : REAL;
+		SetTemp : REAL;
+	END_STRUCT;
+	TempInterfaceStatus_type : 	STRUCT 
+		TuningInProgress : BOOL;
+		HeatOn : BOOL;
+		FanOn : BOOL;
+		ControlActive : BOOL;
+	END_STRUCT;
+	StateReporter_type : 	STRUCT 
+		Main : MainState_enum;
+		Recipe : RecipeCtrlState_enum;
+		Temp : TempCtrlState_enum;
 	END_STRUCT;
 END_TYPE
