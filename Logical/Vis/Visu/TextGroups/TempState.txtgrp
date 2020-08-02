@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.7.3.93 SP"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="TempState">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="5"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="95741" Value="TEMP_INIT"/>
+    <Text ID="95742" Value="TEMP_IDLE"/>
+    <Text ID="95743" Value="TEMP_ON"/>
+    <Text ID="95744" Value="TEMP_ON_MTZONE"/>
+    <Text ID="95745" Value="TEMP_AUTOTUNE"/>
+    <Text ID="95746" Value="TEMP_AUTOTUNE_ABORT"/>
+    <Text ID="95747" Value="TEMP_AUTOTUNE_MTZONE"/>
+    <Text ID="95748" Value="TEMP_ERROR"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="95741" Value=""/>
+    <Text ID="95742" Value=""/>
+    <Text ID="95743" Value=""/>
+    <Text ID="95744" Value=""/>
+    <Text ID="95745" Value=""/>
+    <Text ID="95746" Value=""/>
+    <Text ID="95747" Value=""/>
+    <Text ID="95748" Value=""/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="95741" Value="0"/>
+    <Index ID="95742" Value="10"/>
+    <Index ID="95743" Value="20"/>
+    <Index ID="95744" Value="30"/>
+    <Index ID="95745" Value="40"/>
+    <Index ID="95746" Value="41"/>
+    <Index ID="95747" Value="50"/>
+    <Index ID="95748" Value="60"/>
+  </IndexMap>
+</TextGroup>

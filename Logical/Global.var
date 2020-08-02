@@ -18,4 +18,5 @@ VAR
 	gTempInterface : TempInterface_type;
 	gTuneRecipe : TuneRecipe_type;
 	gRecipeIO : TuneRecipe_type;
+	gStateInfo : StateReporter_type;
 END_VAR

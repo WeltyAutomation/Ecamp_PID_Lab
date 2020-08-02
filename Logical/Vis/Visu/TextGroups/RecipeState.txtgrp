@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.7.3.93 SP"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="RecipeState">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="6"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="95749" Value="RECIPE_INIT"/>
+    <Text ID="95750" Value="RECIPE_IDLE"/>
+    <Text ID="95751" Value="RECIPE_SAVE"/>
+    <Text ID="95752" Value="RECIPE_SAVE_AUTOTUNE"/>
+    <Text ID="95753" Value="RECIPE_LOAD"/>
+    <Text ID="95754" Value="RECIPE_DELETE"/>
+    <Text ID="95755" Value="RECIPE_ERROR"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="95749" Value=""/>
+    <Text ID="95750" Value=""/>
+    <Text ID="95751" Value=""/>
+    <Text ID="95752" Value=""/>
+    <Text ID="95753" Value=""/>
+    <Text ID="95754" Value=""/>
+    <Text ID="95755" Value=""/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="95749" Value="0"/>
+    <Index ID="95750" Value="1"/>
+    <Index ID="95751" Value="2"/>
+    <Index ID="95752" Value="3"/>
+    <Index ID="95753" Value="4"/>
+    <Index ID="95754" Value="5"/>
+    <Index ID="95755" Value="6"/>
+  </IndexMap>
+</TextGroup>

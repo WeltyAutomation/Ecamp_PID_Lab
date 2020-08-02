@@ -5,6 +5,9 @@
  *********************************************************************************)
 
 PROGRAM _CYCLIC
+	
+	gStateInfo.Temp := TempState;
+	
 	TempControllerFBs[ZONE_1_INDEX].MpLink := ADR(gTempController_1);
 	TempControllerFBs[ZONE_2_INDEX].MpLink := ADR(gTempController_2);
 	TempControllerFBs[ZONE_3_INDEX].MpLink := ADR(gTempController_3);

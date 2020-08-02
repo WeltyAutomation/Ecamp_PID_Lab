@@ -47,6 +47,10 @@
     <Source File="TextGroups\Languages.txtgrp"/>
     <Source File="TextGroups\NumPad_Limits.txtgrp"/>
     <Source File="TextGroups\DateTimeFormats.txtgrp"/>
+    <Source File="TextGroups\Labels.txtgrp"/>
+    <Source File="TextGroups\MainStatus.txtgrp"/>
+    <Source File="TextGroups\TempState.txtgrp"/>
+    <Source File="TextGroups\RecipeState.txtgrp"/>
     <Source File="Fonts\Info.fninfo"/>
     <Source File="Fonts\Html_SDM.fninfo"/>
     <Source File="Fonts\Default.fninfo"/>
@@ -143,6 +147,7 @@
     <Source File="Bitmaps\Img_Warning.bminfo"/>
     <Source File="Bitmaps\button_control.bminfo"/>
     <Source File="Bitmaps\button_control_pressed.bminfo"/>
+    <Source File="Bitmaps\WeltyAutomatiD72aR01bP01ZL_mdm.bminfo"/>
     <Source File="BitmapGroups\AlarmAcknowledgeState.bmgrp"/>
     <Source File="BitmapGroups\AlarmBypassState.bmgrp"/>
     <Source File="BitmapGroups\AlarmEvent.bmgrp"/>
@@ -216,6 +221,7 @@
     <Source File="Trends\CPUTemperature.trd"/>
     <Source File="Trends\ROOMTemperature.trd"/>
     <Source File="Trends\Trend_Temperature.tre"/>
+    <Source File="ColorMaps\OffOn.clm"/>
     <Source File="VirtualKeys.vcvk"/>
     <Source File="Palette.vcr"/>
   </SourceFiles>

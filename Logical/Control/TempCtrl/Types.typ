@@ -41,17 +41,6 @@ TYPE
 		Info : MpTempControllerInfoType;
 		TuningDone : BOOL;
 	END_STRUCT;
-	TempCtrlState_enum : 
-		(
-		TEMP_INIT := 0,
-		TEMP_IDLE := 10,
-		TEMP_ON := 20,
-		TEMP_ON_MTZONE := 30,
-		TEMP_AUTOTUNE := 40,
-		TEMP_AUTOTUNE_ABORT := 41,
-		TEMP_AUTOTUNE_MTZONE := 50,
-		TEMP_ERROR := 60
-		);
 	MtZone_Type : 	STRUCT 
 		Profile : MtZoneProfile_type;
 		Controller : MtZoneController_type;

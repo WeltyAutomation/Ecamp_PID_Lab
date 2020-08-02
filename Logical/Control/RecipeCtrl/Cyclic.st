@@ -6,39 +6,41 @@
 
 PROGRAM _CYCLIC
 	
+	gStateInfo.Recipe                  := RecipeState;
+	
 	gRecipeCtrl.Par.SelectedRecipeName := RecipeNames[gRecipeCtrl.Par.RecipeSaveIndex];
 	
-	RecipeCtrl.In.DeviceName    := DEVICE_NAME;
+	RecipeCtrl.In.DeviceName           := DEVICE_NAME;
 		
-	RecipeXmlFB.MpLink          := ADR(gRecipeXml);
-	RecipeXmlFB.Enable          := TRUE;
-	RecipeXmlFB.ErrorReset      := RecipeCtrl.In.ErrorReset;
-	RecipeXmlFB.DeviceName      := ADR(DEVICE_NAME);
-	RecipeXmlFB.FileName        := ADR(RecipeCtrl.In.FileName);
-	RecipeXmlFB.Load            := RecipeCtrl.In.Load;
-	RecipeXmlFB.Save            := RecipeCtrl.In.Save;
+	RecipeXmlFB.MpLink                 := ADR(gRecipeXml);
+	RecipeXmlFB.Enable                 := TRUE;
+	RecipeXmlFB.ErrorReset             := RecipeCtrl.In.ErrorReset;
+	RecipeXmlFB.DeviceName             := ADR(DEVICE_NAME);
+	RecipeXmlFB.FileName               := ADR(RecipeCtrl.In.FileName);
+	RecipeXmlFB.Load                   := RecipeCtrl.In.Load;
+	RecipeXmlFB.Save                   := RecipeCtrl.In.Save;
 	
-	RecipeParFB.MpLink          := ADR(gRecipeXml);
-	RecipeParFB.Enable          := TRUE;
-	RecipeParFB.ErrorReset      := RecipeCtrl.In.ErrorReset;
-	RecipeParFB.PVName          := ADR(PV_NAME);
+	RecipeParFB.MpLink                 := ADR(gRecipeXml);
+	RecipeParFB.Enable                 := TRUE;
+	RecipeParFB.ErrorReset             := RecipeCtrl.In.ErrorReset;
+	RecipeParFB.PVName                 := ADR(PV_NAME);
 	
-	RecipeUIFB.MpLink           := ADR(gRecipeXml);
-	RecipeUIFB.Enable           := TRUE;
-	RecipeUIFB.ErrorReset       := RecipeCtrl.In.ErrorReset;
-	RecipeUIFB.UIConnect        := ADR(gRecipeCtrl.Par.UIConnect);
-	RecipeUIFB.UISetup          := gRecipeCtrl.Par.UISetup;
+	RecipeUIFB.MpLink                  := ADR(gRecipeXml);
+	RecipeUIFB.Enable                  := TRUE;
+	RecipeUIFB.ErrorReset              := RecipeCtrl.In.ErrorReset;
+	RecipeUIFB.UIConnect               := ADR(gRecipeCtrl.Par.UIConnect);
+	RecipeUIFB.UISetup                 := gRecipeCtrl.Par.UISetup;
 	
-	RecipeCtrl.Out.Active       := RecipeXmlFB.Active;
-	RecipeCtrl.Out.Error        := RecipeXmlFB.Error;
-	RecipeCtrl.Out.StatusID     := RecipeXmlFB.StatusID;
-	RecipeCtrl.Out.CommandDone  := RecipeXmlFB.CommandDone;
-	RecipeCtrl.Out.Info         := RecipeXmlFB.Info;
+	RecipeCtrl.Out.Active              := RecipeXmlFB.Active;
+	RecipeCtrl.Out.Error               := RecipeXmlFB.Error;
+	RecipeCtrl.Out.StatusID            := RecipeXmlFB.StatusID;
+	RecipeCtrl.Out.CommandDone         := RecipeXmlFB.CommandDone;
+	RecipeCtrl.Out.Info                := RecipeXmlFB.Info;
 	
-	RecipeCtrl.Par.Out.Active   := RecipeParFB.Active;
-	RecipeCtrl.Par.Out.Error    := RecipeParFB.Error;
-	RecipeCtrl.Par.Out.StatusID := RecipeParFB.StatusID;
-	RecipeCtrl.Par.Out.Info     := RecipeParFB.Info;
+	RecipeCtrl.Par.Out.Active          := RecipeParFB.Active;
+	RecipeCtrl.Par.Out.Error           := RecipeParFB.Error;
+	RecipeCtrl.Par.Out.StatusID        := RecipeParFB.StatusID;
+	RecipeCtrl.Par.Out.Info            := RecipeParFB.Info;
 	
 
 	IF RecipeCtrl.Out.Error OR RecipeCtrl.Par.Out.Error THEN

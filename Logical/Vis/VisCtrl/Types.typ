@@ -3,6 +3,7 @@ TYPE
 	Vis_type : 	STRUCT 
 		Alarms : VisAlarms_type;
 		Temp : TempInterface_type;
+		States : StateReporter_type;
 	END_STRUCT;
 	VisAlarms_type : 	STRUCT 
 		AlarmListConnect : MpAlarmXListUIConnectType;

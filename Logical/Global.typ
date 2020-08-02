@@ -2,11 +2,32 @@
 TYPE
 	MainState_enum : 
 		(
-		MAIN_INIT,
-		MAIN_IDLE,
-		MAIN_HEAT,
-		MAIN_AUTOTUNE,
-		MAIN_ERROR
+		MAIN_INIT := 0,
+		MAIN_IDLE := 1,
+		MAIN_HEAT := 2,
+		MAIN_AUTOTUNE := 3,
+		MAIN_ERROR := 4
+		);
+	RecipeCtrlState_enum : 
+		(
+		RECIPE_INIT := 0,
+		RECIPE_IDLE := 1,
+		RECIPE_SAVE := 2,
+		RECIPE_SAVE_AUTOTUNE := 3,
+		RECIPE_LOAD := 4,
+		RECIPE_DELETE := 5,
+		RECIPE_ERROR := 6
+		);
+	TempCtrlState_enum : 
+		(
+		TEMP_INIT := 0,
+		TEMP_IDLE := 10,
+		TEMP_ON := 20,
+		TEMP_ON_MTZONE := 30,
+		TEMP_AUTOTUNE := 40,
+		TEMP_AUTOTUNE_ABORT := 41,
+		TEMP_AUTOTUNE_MTZONE := 50,
+		TEMP_ERROR := 60
 		);
 	MainCtrl_type : 	STRUCT 
 		Cmd : MainCmd_type;
@@ -104,5 +125,10 @@ TYPE
 		HeatOn : BOOL;
 		FanOn : BOOL;
 		ControlActive : BOOL;
+	END_STRUCT;
+	StateReporter_type : 	STRUCT 
+		Main : MainState_enum;
+		Recipe : RecipeCtrlState_enum;
+		Temp : TempCtrlState_enum;
 	END_STRUCT;
 END_TYPE

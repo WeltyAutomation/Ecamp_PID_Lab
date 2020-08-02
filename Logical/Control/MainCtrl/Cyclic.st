@@ -1,5 +1,12 @@
+(*********************************************************************************
+ * Copyright:   
+ * Author:    TylerWoodley 
+ * Created:   August 2, 2020/3:50 PM 
+ *********************************************************************************)
 
 PROGRAM _CYCLIC
+	
+	gStateInfo.Main := gMainState;
 	
 	IF NOT(gMainState = MAIN_INIT) THEN
 		FOR index := 0 TO 2 DO

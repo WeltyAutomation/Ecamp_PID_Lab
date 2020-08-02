@@ -10,6 +10,8 @@ PROGRAM _CYCLIC
 		Vis.Temp.Status[index] := gTempInterface.Status[index];
 	END_FOR;
 	
+	Vis.States := gStateInfo;	
+	
 	IF (Page = PAGE_START) THEN
 		IF EDGEPOS(gMainState = MAIN_IDLE) THEN
 			ChangePage := PAGE_MAIN;

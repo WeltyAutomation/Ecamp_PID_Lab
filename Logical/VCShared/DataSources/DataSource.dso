@@ -31,6 +31,154 @@
           <Property Name="UserID" Value="None"/>
           <Property Name="VCType" Value="INTEGER"/>
         </DataPoint>
+        <Folder Name="Vis">
+          <Property Name="Description" Value=""/>
+          <Property Name="FolderType" Value="Struct"/>
+          <Folder Name="States">
+            <Property Name="Description" Value=""/>
+            <Property Name="FolderType" Value="Struct"/>
+            <DataPoint Name="Main">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis\Visu"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="MainState_enum"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="Recipe">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis\Visu"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="RecipeCtrlState_enum"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="Temp">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis\Visu"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="TempCtrlState_enum"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+          </Folder>
+          <Folder Name="Temp">
+            <Property Name="Description" Value=""/>
+            <Property Name="FolderType" Value="Struct"/>
+            <Folder Name="Trends">
+              <Property Name="Description" Value=""/>
+              <Property Name="FolderType" Value="Struct[0..3]"/>
+              <Folder Name="Trends[0]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="ActualTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis\Visu"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+                <DataPoint Name="SetTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Trends[1]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="ActualTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+                <DataPoint Name="SetTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Trends[2]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="ActualTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+                <DataPoint Name="SetTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Trends[3]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="ActualTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+                <DataPoint Name="SetTemp">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="DPLimit" Value="Default"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="REAL"/>
+                  <Property Name="PLCUnit" Value="Source[relative:UnitGroup].Unit[Celsius]"/>
+                  <Property Name="UnitGroup" Value="Source[global].UnitGroup[Temperatures]"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="SCALED"/>
+                </DataPoint>
+              </Folder>
+            </Folder>
+          </Folder>
+        </Folder>
       </Folder>
     </Folder>
   </DataPoints>
