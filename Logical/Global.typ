@@ -113,7 +113,7 @@ TYPE
 	TempInterface_type : 	STRUCT 
 		Trends : ARRAY[0..3]OF TempInterfaceTrends_type;
 		Status : ARRAY[0..3]OF TempInterfaceStatus_type;
-		PID : ARRAY[0..3]OF PIDParameterContainer_type;
+		Recipe : TuneRecipe_type;
 		Enables : ARRAY[0..3]OF BOOL := [4(TRUE)];
 	END_STRUCT;
 	TempInterfaceTrends_type : 	STRUCT 

@@ -77,24 +77,6 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
-        <Control ClassId="0x00001001" Name="Shape_1">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="300"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="180"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001001" Name="Shape_2">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="300"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="260"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
         <Control ClassId="0x00001004" Name="Text_2">
           <Property Name="AlignmentHorizontal" Value="Right"/>
           <Property Name="AlignmentVertical" Value="Center"/>
@@ -151,24 +133,6 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
-        <Control ClassId="0x00001001" Name="Shape_3">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="390"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="180"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001001" Name="Shape_4">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="390"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="260"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
         <Control ClassId="0x00001004" Name="Text_5">
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
@@ -206,24 +170,6 @@
           <Property Name="UnitTextWidth" Value="0"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Trends[0].ActualTemp]"/>
           <Property Name="ValueMode" Value="Standard"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001001" Name="Shape_5">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="480"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="180"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001001" Name="Shape_6">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="480"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="260"/>
           <Property Name="Width" Value="90"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_6">
@@ -265,15 +211,6 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
-        <Control ClassId="0x00001001" Name="Shape_7">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="620"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
-          <Property Name="Top" Value="180"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
         <Control ClassId="0x00001004" Name="Text_7">
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
@@ -289,6 +226,167 @@
           <Property Name="TextIndexOffset" Value="1"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="130"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_3">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[0].HeatOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="300"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="5"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="180"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_8">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[1].HeatOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="390"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="5"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="180"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_9">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[2].HeatOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="480"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="5"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="180"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_10">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[3].HeatOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="620"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="5"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="180"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_11">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[0].FanOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="300"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="6"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="260"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_12">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[1].FanOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="390"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="6"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="260"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_13">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="255"/>
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.Vis.VisCtrl.Vis.Temp.Status[2].FanOn]"/>
+          <Property Name="ColorMap" Value="Source[local].ColorMap[OffOn]"/>
+          <Property Name="ColorMapIndexOffset" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="Font" Value="Source[local].Font[Header]"/>
+          <Property Name="ForeColor" Value="252"/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="Left" Value="480"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Default]"/>
+          <Property Name="TextGroup" Value="Source[local].TextGroup[Labels]"/>
+          <Property Name="TextIndexOffset" Value="6"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="260"/>
           <Property Name="Width" Value="90"/>
         </Control>
       </Controls>
